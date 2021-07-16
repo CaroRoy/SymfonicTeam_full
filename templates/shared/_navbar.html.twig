@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#!"><h4>Symphonic Team</h4></a>
+        <a class="navbar-brand" href="{{ path('home') }}"><h4>Symphonic Team</h4></a>
         <button
           class="navbar-toggler"
           type="button"
@@ -23,14 +23,34 @@
               >
             </li>
           </ul>
-          <ul class="p-0">
-            <a href="#!" class="btn btn-outline-primary"
-              >S'identifier
-            </a>
+          <ul class="p-0 navbar-nav">
+            {% if app.user %}
+            
+              <li class="nav-item align-self-center me-3">
+                <p class="user-name">Bonjour {{app.user.pseudo}}</p>
+              </li>
 
-            <a href="{{ path('app_register') }}" class="btn btn-primary"
-              >S'inscrire
-            </a>
+              <li>
+                <a href="{{ path('app_logout') }}" class="btn btn-outline-primary"
+                >Se déconnecter
+                </a>
+              </li>
+
+              {% else %}
+
+                <li>
+                  <a href="{{ path('app_login') }}" class="btn btn-outline-primary me-1"
+                  >S'identifier
+                  </a>
+                </li>
+
+                <li>
+                  <a href="{{ path('app_register') }}" class="btn btn-primary"
+                  >S'inscrire
+                  </a>
+                </li>
+
+            {% endif %}
           </ul>
         </div>
       </div>

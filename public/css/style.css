@@ -57,6 +57,12 @@ nav .btn:hover {
   font-weight: 400;
 }
 
+.user-name {
+  height: 100%;
+  margin-bottom: 0;
+  color: rgba(0, 0, 0, 0.55);
+}
+
 /*------------------------------------DIV RECHERCHE--------------------------------------*/
 
 .recherche {
