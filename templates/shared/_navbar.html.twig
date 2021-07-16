@@ -26,8 +26,17 @@
           <ul class="p-0 navbar-nav">
             {% if app.user %}
             
-              <li class="nav-item align-self-center me-3">
-                <p class="user-name">Bonjour {{app.user.pseudo}}</p>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Bonjour {{app.user.pseudo}}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Mon compte</a></li>
+                  <li><a class="dropdown-item" href="#">Mes séances publiées</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Séances auxquelles je participe</a></li>
+                  <li><a class="dropdown-item" href="#">Séances qui m'intéressent</a></li>
+                </ul>
               </li>
 
               <li>
