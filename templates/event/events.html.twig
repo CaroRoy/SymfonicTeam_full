@@ -1,0 +1,149 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}{% endblock %}
+
+{% block body %}
+    <main>
+      <section>
+        <h2>{{events | length}} séances ont été proposées. Fais ton choix !</h2>
+
+        {% for e in events %}
+        <article>
+          <div class="top">
+            <div class="gauche">
+              <h3>{{e.title}}</h3>
+              <div>
+                <h6 class="m-0 me-2 p-0">Date :</h6>
+                <p class="m-0 p-0">{{e.meetingDatetime}}</p>
+              </div>
+              <div>
+                <h6 class="m-0 me-2 p-0">Lieu :</h6>
+                <p class="m-0 p-0">{{e.meetingPostalCode}}, {{e.meetingCity}}</p>
+              </div>
+            </div>
+            <div class="droite">
+              <h6 class="me-1">Publié par :</h6>
+
+              <div>
+                <p class="mb-0 pseudo">{{e.user.pseudo}}</p>
+                <img
+                  class="button avatar"
+                  src="https://randomuser.me/api/portraits/lego/6.jpg"
+                  alt="photo"
+                />
+              </div>
+            </div>
+          </div>
+
+          <p class="message">
+            {{e.content}}
+          </p>
+
+          <div class="bas">
+            <div>
+              <h6 class="m-0 me-2 p-0">Instrument :</h6>
+              <p class="m-0 p-0">{{e.instrument}}</p>
+            </div>
+            <div>
+              <h6 class="m-0 me-2 p-0">Style de musique :</h6>
+              <p class="m-0 p-0">{{e.typeOfMusic}}</p>
+            </div>
+          </div>
+
+          <div class="boutons">
+            <button class="btn btn-primary">
+              <i class="fas fa-check"></i> J'y vais !
+            </button>
+            <button class="btn btn-warning">
+              <i class="fas fa-star"></i> Ça m'intéresse
+            </button>
+            <div id="toggleShare">
+              <button class="btn btn-success">
+                <i class="fas fa-share"></i> Je partage
+              </button>
+              <div class="social">
+                <a
+                  class="facebook"
+                  title="facebook"
+                  href="https://www.facebook.com/sharer/sharer.php?u=www.google.com"
+                  target="_blank"
+                  ><i class="fab fa-facebook"></i
+                ></a>
+                <a
+                  class="whatsapp"
+                  title="whatsapp"
+                  href="https://api.whatsapp.com/send?text=Regarde cette annonce !&url?url=${postUrl}"
+                  target="_blank"
+                  ><i class="fab fa-whatsapp"></i
+                ></a>
+                <a
+                  class="messenger"
+                  title="messenger"
+                  href="https://m.me/www.google.com"
+                  target="_blank"
+                  ><i class="fab fa-facebook-messenger"></i
+                ></a>
+                <a
+                  class="telegram"
+                  title="telegram"
+                  href="https://t.me/share/url?url=www.google.com&text=Regarde cette annonce !"
+                  target="_blank"
+                  ><i class="fab fa-telegram"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        {% endfor %}
+      </section>
+    </main>
+
+    <div id="popup">
+      <div class="bg">
+        <div class="card border-0">
+          <div
+            class="
+              card-header
+              d-flex
+              justify-content-between
+              align-items-center
+            "
+          >
+            <h5 class="card-title m-0">Jessica</h5>
+            <div id="popButtons">
+              <button type="button" class="texteBouton">Fermer</button>
+              <button
+                type="button"
+                class="btn-close btn-close-white"
+                aria-label="Close"
+              ></button>
+            </div>
+          </div>
+          <div class="card-body d-flex flex-column">
+            <img
+              class="align-self-center mt-3"
+              id="pop-img"
+              src="https://randomuser.me/api/portraits/women/47.jpg"
+              alt="photo"
+            />
+
+            <p class="card-text">
+              <span>Style(s) de musique :</span> classique, jazz, variété
+              française
+            </p>
+
+            <p class="card-text">
+              <span>Instrument(s) joué(s) (niveau de maîtrise) :</span> violon
+              (plus de 10 ans), piano (plus de 10 ans), accordéon (entre 3 et 10
+              ans)
+            </p>
+
+            <p class="card-text"><span>Département :</span> 91 - Essonne</p>
+            <p class="card-text"><span>Age :</span> 42 ans</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}
