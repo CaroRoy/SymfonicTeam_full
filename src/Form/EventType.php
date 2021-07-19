@@ -16,9 +16,10 @@ class EventType extends AbstractType
         $builder
             ->add('title', TextType::class, ['label' => 'Titre :'])
             ->add('content', TextType::class)
-            ->add('meetingDatetime', DateTimeType::class, ['label' => 'Date et heure :'])
+            ->add('meetingDatetime', DateTimeType::class, ['label' => 'Date et heure :', 'date_widget' => 'single_text'])
             ->add('meetingPostalCode', TextType::class, ['label' => 'Code postal :'])
             ->add('meetingCity', TextType::class, ['label' => 'Ville :'])
+            ->add('meetingPlace', TextType::class, ['label' => 'Lieu exact du rdv (ex: devant la gare, sur le parvis de l\'hôtel de ville...) :'])
             ->add('typeOfMusic', TextType::class, ['label' => 'Style(s) de musique que tu proposes :'])
             ->add('instrument', TextType::class, ['label' => 'Instrument(s) souhaités pour cette séance :'])
         ;

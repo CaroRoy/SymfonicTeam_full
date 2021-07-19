@@ -58,6 +58,11 @@ class Event
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $meetingPlace;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -155,6 +160,18 @@ class Event
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getMeetingPlace(): ?string
+    {
+        return $this->meetingPlace;
+    }
+
+    public function setMeetingPlace(?string $meetingPlace): self
+    {
+        $this->meetingPlace = $meetingPlace;
 
         return $this;
     }

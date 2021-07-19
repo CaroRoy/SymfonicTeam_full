@@ -15,6 +15,7 @@
   border: 1px solid #fdcc38;
   color: inherit;
 }
+
 /*-------------------------------------------RECHERCHE--------------------------------------------------*/
 
 .recherche {
@@ -75,8 +76,7 @@ main {
 
 section {
   width: 80%;
-  margin-left: auto;
-  margin-right: 20px;
+  margin: 0 auto;
 }
 
 section h2 {

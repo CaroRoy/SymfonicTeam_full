@@ -11,10 +11,9 @@ class EventListController extends AbstractController {
     /**
      * @Route("/seances", name="event_list")
      */
-    public function list(EventRepository $eventRepository): Response
-    {
+    public function list(EventRepository $eventRepository): Response {
         $events = $eventRepository->findAll();
 
-        return $this->render("event/events.html.twig",['events' => $events]);
+        return $this->render("event/event_list.html.twig",['events' => $events]);
     }
 }

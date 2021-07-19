@@ -1,0 +1,55 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="{{asset('css/style_user_event_list.css')}}">
+{% endblock %}
+
+{% block body %}
+    <main>
+        <div class="row">
+            {% include "shared/_messages_flash.html.twig" %}
+        </div>
+      <section>
+        <h2>Tu as créé {{events | length}} séances :</h2>
+
+        {% for e in events %}
+            <article>
+                <div class="top">
+                <h3>{{e.title}}</h3>
+                <div>
+                    <h6 class="m-0 me-2 p-0">Date :</h6>
+                    <p class="m-0 p-0">{{e.meetingDatetime | date('d-m-Y, H:i:s')}}</p>
+                </div>
+                <div>
+                    <h6 class="m-0 me-2 p-0">Lieu :</h6>
+                    <p class="m-0 p-0">
+                    {{e.meetingPlace}}, {{e.meetingPostalCode}}, {{e.meetingCity}}
+                    </p>
+                </div>
+                </div>
+
+                <p class="message">
+                {{e.content}}
+                </p>
+
+                <div class="bas">
+                <div>
+                    <h6 class="m-0 me-2 p-0">Instrument :</h6>
+                    <p class="m-0 p-0">{{e.instrument}}</p>
+                </div>
+                <div>
+                    <h6 class="m-0 me-2 p-0">Style de musique :</h6>
+                    <p class="m-0 p-0">{{e.typeOfMusic}}</p>
+                </div>
+                </div>
+
+                <div class="boutons">
+                    <a href="{{path('user_event_show', {'id' : e.id })}}" class="btn btn-primary">
+                        <i class="fas fa-info-circle"></i> Détails
+                    </a>
+                </div>
+            </article>
+        {% endfor %}
+      </section>
+    </main>
+{% endblock %}

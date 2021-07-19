@@ -34,20 +34,13 @@ form div {
   width: 100%;
 }
 
-.instru p {
-  color: rgb(74, 0, 170);
-  font-size: 0.8em;
-  margin-bottom: 0;
-}
-
-.checkbox {
-  width: 100%;
+#event_meetingDatetime {
   display: flex;
 }
 
-.checkbox .colonne {
-  width: 50%;
-  margin-bottom: 0;
+#event_meetingDatetime_time_hour,
+#event_meetingDatetime_time_minute {
+  width: 100px;
 }
 
 form ul {

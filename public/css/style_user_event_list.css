@@ -1,0 +1,81 @@
+/*------------------------------------------BOUTONS----------------------------------------------*/
+
+.btn-dark:hover {
+  background-color: #363636;
+  border: 1px solid #363636;
+}
+
+.btn-danger:hover {
+  background-color: #e7192e;
+  border: 1px solid #e7192e;
+}
+
+.btn-light:hover {
+  background-color: #e4e4e4;
+  border: 1px solid #e4e4e4;
+  color: inherit;
+}
+
+.button-back {
+  margin: 0 50px;
+}
+
+/*-----------------------------------------MAIN----------------------------------------------*/
+
+h2 {
+  width: 80%;
+  margin: 20px auto;
+}
+
+/*---------------------------------------------SECTION ARTICLES------------------------------------------------------*/
+
+article {
+  width: 80%;
+  margin: 0 auto 20px;
+  padding: 40px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgb(187, 187, 187);
+}
+
+.top div,
+.bas div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.boutons {
+  margin-top: 20px;
+}
+
+article i {
+  opacity: 0.85;
+}
+/*-------------------------------------------MOBILE RESPONSIVE--------------------------------------------------*/
+
+@media screen and (max-width: 768px) {
+  article {
+    padding: 10px;
+  }
+
+  .top {
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+
+  .top div,
+  .bas div {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .message {
+    margin-top: 20px;
+  }
+
+  .boutons .btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
