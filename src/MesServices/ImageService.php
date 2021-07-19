@@ -46,6 +46,6 @@ class ImageService {
             $file
         );
 
-        $entity->setImageUrl('/uploads/'. $file);
+        $entity->setAvatar('/uploads/'. $file);
     }
 }

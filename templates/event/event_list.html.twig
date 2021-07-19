@@ -1,7 +1,7 @@
 {% extends "base.html.twig" %}
 
 {% block stylesheets %}
-  <link rel="stylesheet" href="{{asset('css/style_event_list.css')}}">
+  <link rel="stylesheet" href="{{asset('css/style_admin_event_list.css')}}">
 {% endblock %}
 
 {% block body %}
@@ -20,7 +20,7 @@
               </div>
               <div>
                 <h6 class="m-0 me-2 p-0">Lieu :</h6>
-                <p class="m-0 p-0">{{e.meetingPostalCode}}, {{e.meetingCity}}</p>
+                <p class="m-0 p-0">{{e.meetingPlace}}, {{e.meetingPostalCode}}, {{e.meetingCity}}</p>
               </div>
             </div>
             <div class="droite">
@@ -53,50 +53,6 @@
             <div>
               <h6 class="m-0 me-2 p-0">Style de musique :</h6>
               <p class="m-0 p-0">{{e.typeOfMusic}}</p>
-            </div>
-          </div>
-
-          <div class="boutons">
-            <button class="btn btn-primary">
-              <i class="fas fa-check"></i> J'y vais !
-            </button>
-            <button class="btn btn-warning">
-              <i class="fas fa-star"></i> Ça m'intéresse
-            </button>
-            <div id="toggleShare">
-              <button class="btn btn-success">
-                <i class="fas fa-share"></i> Je partage
-              </button>
-              <div class="social">
-                <a
-                  class="facebook"
-                  title="facebook"
-                  href="https://www.facebook.com/sharer/sharer.php?u=www.google.com"
-                  target="_blank"
-                  ><i class="fab fa-facebook"></i
-                ></a>
-                <a
-                  class="whatsapp"
-                  title="whatsapp"
-                  href="https://api.whatsapp.com/send?text=Regarde cette annonce !&url?url=${postUrl}"
-                  target="_blank"
-                  ><i class="fab fa-whatsapp"></i
-                ></a>
-                <a
-                  class="messenger"
-                  title="messenger"
-                  href="https://m.me/www.google.com"
-                  target="_blank"
-                  ><i class="fab fa-facebook-messenger"></i
-                ></a>
-                <a
-                  class="telegram"
-                  title="telegram"
-                  href="https://t.me/share/url?url=www.google.com&text=Regarde cette annonce !"
-                  target="_blank"
-                  ><i class="fab fa-telegram"></i
-                ></a>
-              </div>
             </div>
           </div>
         </article>

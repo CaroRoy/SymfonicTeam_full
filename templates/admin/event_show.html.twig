@@ -1,0 +1,78 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="{{asset('css/style_admin_event_list.css')}}">
+{% endblock %}
+
+{% block body %}
+    <main>
+        <div class="row">
+            {% include "shared/_messages_flash.html.twig" %}
+        </div>
+        <section class="my-4">
+            <article>
+                <div class="top">
+                    <div class="gauche">
+                        <h3>{{event.title}}</h3>
+                        <div>
+                            <h6 class="m-0 me-2 p-0">Date :</h6>
+                            <p class="m-0 p-0">{{event.meetingDatetime | date('d-m-Y, H:i:s')}}</p>
+                        </div>
+                        <div>
+                            <h6 class="m-0 me-2 p-0">Lieu :</h6>
+                            <p class="m-0 p-0">{{event.meetingPlace}}, {{event.meetingPostalCode}}, {{event.meetingCity}}</p>
+                        </div>
+                    </div>
+                    <div class="droite">
+                        <h6 class="me-1">Publié par :</h6>
+
+                        <div>
+                            <p class="mb-0 pseudo">{{event.user.firstName}}</p>
+                            <img
+                            class="button avatar"
+                            {% if event.user.avatar is not same as null %}
+                                src="{{event.user.avatar}}"
+                            {% else %}
+                                src="{{asset('images/default-avatar.jpg')}}"
+                            {% endif %}
+                            alt="photo"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <p class="message">
+                {{event.content}}
+                </p>
+
+                <div class="bas">
+                    <div>
+                        <h6 class="m-0 me-2 p-0">Instrument :</h6>
+                        <p class="m-0 p-0">{{event.instrument}}</p>
+                    </div>
+                    <div>
+                        <h6 class="m-0 me-2 p-0">Style de musique :</h6>
+                        <p class="m-0 p-0">{{event.typeOfMusic}}</p>
+                    </div>
+                </div>
+
+                <div class="boutons">
+                    <a href="{{path('event_update', {'id' : event.id })}}" class="btn btn-primary">
+                        <i class="fas fa-tools"></i> Modifier
+                    </a>
+                    <button class="btn btn-dark" id="js-openModalDelete">
+                        <i class="fas fa-trash-alt"></i> Supprimer
+                    </button>
+                </div>
+            </article>
+
+            <a href="{{path('admin_event_list')}}" class="btn btn-light button-back">
+                <i class="fas fa-angle-double-left"></i> Retour
+            </a>
+        </section>
+    </main>
+
+    {% include "shared/_modal_delete_event.html.twig" with {'id' : event.id }  %}
+    <script src={{asset('js/deleteModal.js')}}></script>
+
+{% endblock %}

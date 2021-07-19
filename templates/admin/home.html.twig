@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('css/style_admin_home.css')}}">
+{% endblock %}
+
+{% block body %}
+<main>
+    <div class="row">
+        {% include "shared/_messages_flash.html.twig" %}
+    </div>
+        <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <h3>Gérer les séances</h3>
+                </div>
+                <div class="card-body">
+                    <a class="btn btn-primary btn-sm" href="{{path('admin_event_list')}}">Les séances</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

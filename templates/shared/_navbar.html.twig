@@ -30,7 +30,7 @@
             
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Bonjour {{app.user.pseudo}}
+                  Bonjour {{app.user.firstName}}
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="#">Mon compte</a></li>
@@ -38,6 +38,13 @@
                 </ul>
               </li>
 
+              {% if app.user.roles[0] is same as "ROLE_ADMIN" %}
+                <li class="nav-item">
+                  <a href="{{ path('admin_home') }}" class="nav-link"
+                  >Espace admin
+                  </a>
+                </li>
+              {% endif %}
               <li>
                 <a href="{{ path('app_logout') }}" class="btn btn-outline-primary"
                 >Se déconnecter

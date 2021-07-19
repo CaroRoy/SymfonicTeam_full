@@ -11,7 +11,7 @@
         </div>
       <section>
         {% if events | length > 0 %}
-            <h2>Tu as créé {{events | length}} séances :</h2>
+            <h2>{{events | length}} séances créées :</h2>
 
             {% for e in events %}
                 <article>
@@ -45,7 +45,7 @@
                     </div>
 
                     <div class="boutons">
-                        <a href="{{path('user_event_show', {'id' : e.id })}}" class="btn btn-primary">
+                        <a href="{{path('admin_event_show', {'id' : e.id })}}" class="btn btn-primary">
                             <i class="fas fa-info-circle"></i> Détails
                         </a>
                     </div>
@@ -54,8 +54,7 @@
 
         {% else %}
             <div class="no-event">
-                <h5>Tu n'as pas encore créé de séance</h5>
-                <a href="{{path('event_create')}}" class="btn btn-primary">Je propose une nouvelle séance !</a>
+                <h5>Aucune séance n'a encore été proposée</h5>
             </div>
         {% endif %}
       </section>

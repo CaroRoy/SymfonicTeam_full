@@ -27,6 +27,11 @@ h2 {
   margin: 20px auto;
 }
 
+.no-event {
+  width: 80%;
+  height: 45vh;
+  margin: 20px auto;
+}
 /*---------------------------------------------SECTION ARTICLES------------------------------------------------------*/
 
 article {
