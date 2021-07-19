@@ -15,12 +15,12 @@ class EventType extends AbstractType
     {
         $builder
             ->add('title', TextType::class, ['label' => 'Titre :'])
+            ->add('content', TextType::class)
             ->add('meetingDatetime', DateTimeType::class, ['label' => 'Date et heure :'])
             ->add('meetingPostalCode', TextType::class, ['label' => 'Code postal :'])
             ->add('meetingCity', TextType::class, ['label' => 'Ville :'])
             ->add('typeOfMusic', TextType::class, ['label' => 'Style(s) de musique que tu proposes :'])
             ->add('instrument', TextType::class, ['label' => 'Instrument(s) souhaités pour cette séance :'])
-            ->add('content', TextType::class)
         ;
     }
 

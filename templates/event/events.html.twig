@@ -1,6 +1,8 @@
 {% extends "base.html.twig" %}
 
-{% block stylesheets %}{% endblock %}
+{% block stylesheets %}
+  <link rel="stylesheet" href="{{asset('css/style_event_list.css')}}">
+{% endblock %}
 
 {% block body %}
     <main>
@@ -14,7 +16,7 @@
               <h3>{{e.title}}</h3>
               <div>
                 <h6 class="m-0 me-2 p-0">Date :</h6>
-                <p class="m-0 p-0">{{e.meetingDatetime}}</p>
+                <p class="m-0 p-0">{{e.meetingDatetime | date('d-m-Y, h:m:s')}}</p>
               </div>
               <div>
                 <h6 class="m-0 me-2 p-0">Lieu :</h6>
