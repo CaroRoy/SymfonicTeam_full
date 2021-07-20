@@ -1,10 +1,14 @@
 {% extends "base.html.twig" %}
 
 {% block stylesheets %}
-  <link rel="stylesheet" href="{{asset('css/style_admin_event_list.css')}}">
+  <link rel="stylesheet" href="{{asset('css/style_event_list.css')}}">
 {% endblock %}
 
-{% block body %}
+{% block body %}   
+  <div class="flash">
+      {% include "shared/_messages_flash.html.twig" %}
+  </div>
+
     <main>
       <section>
         <h2>{{events | length}} séances ont été proposées. Fais ton choix !</h2>

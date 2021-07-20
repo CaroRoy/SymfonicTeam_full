@@ -25,6 +25,11 @@ body {
   background-color: whitesmoke;
 }
 
+.flash {
+  width: 300px;
+  margin: 20px auto;
+}
+
 /*------------------------------------------BOUTONS----------------------------------------------*/
 
 .btn-primary {

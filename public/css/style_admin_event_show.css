@@ -18,16 +18,11 @@
 
 /*-----------------------------------------MAIN----------------------------------------------*/
 
-h2 {
-  width: 80%;
-  margin: 20px auto;
+main {
+  display: flex;
+  position: relative;
 }
 
-.no-event {
-  width: 80%;
-  height: 45vh;
-  margin: 20px auto;
-}
 /*---------------------------------------------SECTION ARTICLES------------------------------------------------------*/
 
 section {
@@ -35,20 +30,37 @@ section {
   margin: 0 auto;
 }
 
-article {
-  width: 100%;
-  margin: 0 auto 20px;
+section article {
   padding: 40px;
   background-color: white;
   border-radius: 20px;
+  margin-bottom: 20px;
   box-shadow: 0 0 10px rgb(187, 187, 187);
 }
 
-.top div,
+article .top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.gauche div,
 .bas div {
   display: flex;
   align-items: center;
   margin-bottom: 5px;
+}
+
+.droite p {
+  font-family: "Sansita", sans-serif;
+}
+
+article img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgb(179, 179, 179);
+  cursor: pointer;
 }
 
 .boutons {
@@ -58,10 +70,11 @@ article {
 article i {
   opacity: 0.85;
 }
+
 /*-------------------------------------------MOBILE RESPONSIVE--------------------------------------------------*/
 
 @media screen and (max-width: 768px) {
-  article {
+  section article {
     padding: 10px;
   }
 
@@ -70,17 +83,31 @@ article i {
     margin-bottom: 10px;
   }
 
-  .top div,
+  .gauche div,
   .bas div {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .droite h6 {
+    margin-bottom: 0;
+  }
+
+  .droite div {
+    display: flex;
+  }
+
+  .droite img {
+    width: 40px;
+    height: 40px;
+    margin-left: 20px;
   }
 
   .message {
     margin-top: 20px;
   }
 
-  .boutons .btn {
+  .boutons button {
     width: 100%;
     margin-bottom: 10px;
   }

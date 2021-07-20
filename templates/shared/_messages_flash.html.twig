@@ -1,7 +1,7 @@
 {% for rubrique,messages in app.flashes %}
-    <div class="col-12 alert alert-{{ rubrique }}">
+    <div class="alert alert-{{ rubrique }}">
          {% for message in messages %}
-            <p> {{ message }}</p>
+            <p>{{ message }}</p>
          {% endfor %}
     </div>
 {% endfor %}

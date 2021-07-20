@@ -1,14 +1,15 @@
 {% extends "base.html.twig" %}
 
 {% block stylesheets %}
-  <link rel="stylesheet" href="{{asset('css/style_admin_event_list.css')}}">
+  <link rel="stylesheet" href="{{asset('css/style_admin_event_show.css')}}">
 {% endblock %}
 
 {% block body %}
+    <div class="flash">
+        {% include "shared/_messages_flash.html.twig" %}
+    </div>
+
     <main>
-        <div class="row">
-            {% include "shared/_messages_flash.html.twig" %}
-        </div>
         <section class="my-4">
             <article>
                 <div class="top">
@@ -57,9 +58,6 @@
                 </div>
 
                 <div class="boutons">
-                    <a href="{{path('event_update', {'id' : event.id })}}" class="btn btn-primary">
-                        <i class="fas fa-tools"></i> Modifier
-                    </a>
                     <button class="btn btn-dark" id="js-openModalDelete">
                         <i class="fas fa-trash-alt"></i> Supprimer
                     </button>
@@ -72,7 +70,7 @@
         </section>
     </main>
 
-    {% include "shared/_modal_delete_event.html.twig" with {'id' : event.id }  %}
+    {% include "admin/admin_modal_delete_event.html.twig" with {'id' : event.id }  %}
     <script src={{asset('js/deleteModal.js')}}></script>
 
 {% endblock %}

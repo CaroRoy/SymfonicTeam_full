@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class EventUpdateController extends AbstractController {
     /**
-     * @Route("modifier/{id}", name="event_update")
+     * @Route("modifier/seance-{id}", name="event_update")
      */
     public function create(int $id,Request $request, EntityManagerInterface $em, EventRepository $eventRepository) : Response {
         $event = $eventRepository->find($id);
