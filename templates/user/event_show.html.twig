@@ -26,10 +26,6 @@
                     </div>
                 </div>
 
-                <p class="message">
-                {{event.content}}
-                </p>
-
                 <div class="bas">
                     <div>
                         <h6 class="m-0 me-2 p-0">Instrument :</h6>
@@ -39,7 +35,39 @@
                         <h6 class="m-0 me-2 p-0">Style de musique :</h6>
                         <p class="m-0 p-0">{{event.typeOfMusic}}</p>
                     </div>
+                    <div>
+                        <h6 class="m-0 me-2 p-0">Infos supplémentaires :</h6>
+                        <p class="m-0 p-0">{{event.content}}</p>
+                    </div>
                 </div>
+
+                <hr>
+                
+                <div>
+                    {% if replys | length > 0 %}
+                        <h6 class="m-0 me-2 mb-3 p-0">Ils participeront :</h6>
+                        <ul class="d-flex">
+                            {% for r in replys %}
+                                <li class="me-5 d-flex flex-column align-items-center">
+                                    <img 
+                                        class="button avatar"
+                                        {% if r.user.avatar is not same as null %}
+                                        src="{{r.user.avatar}}"
+                                        {% else %}
+                                        src="{{asset('images/default-avatar.jpg')}}"
+                                        {% endif %}
+                                        alt="photo"
+                                    >
+                                    <p>{{r.user.firstName}}</p>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <h6>Aucun participant pour le moment</h6>
+                    {% endif %}
+                </div>
+
+                <hr>
 
                 <div class="boutons">
                     <a href="{{path('event_update', {'id' : event.id })}}" class="btn btn-primary">
