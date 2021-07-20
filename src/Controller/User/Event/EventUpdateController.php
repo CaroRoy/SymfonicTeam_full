@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Event;
+namespace App\Controller\User\Event;
 
 use App\Entity\Event;
 use App\Form\EventType;

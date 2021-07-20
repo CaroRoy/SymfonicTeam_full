@@ -5,10 +5,11 @@
 {% endblock %}
 
 {% block body %}
+    <div class="flash">
+        {% include "shared/_messages_flash.html.twig" %}
+    </div>
+    
     <main>
-        <div class="flash">
-            {% include "shared/_messages_flash.html.twig" %}
-        </div>
       <section class="my-4">
             <article>
                 <div class="top">

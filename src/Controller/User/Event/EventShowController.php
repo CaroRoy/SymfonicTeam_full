@@ -1,6 +1,6 @@
 <?php 
 
-namespace App\Controller\User;
+namespace App\Controller\User\Event;
 
 use App\Repository\EventRepository;
 use Symfony\Component\HttpFoundation\Response;
