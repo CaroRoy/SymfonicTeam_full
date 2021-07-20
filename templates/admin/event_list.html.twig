@@ -11,6 +11,10 @@
     
     <main>
       <section>
+        <a href="{{path('admin_home')}}" class="btn btn-light button-back">
+            <i class="fas fa-angle-double-left"></i> Retour
+        </a>
+
         {% if events | length > 0 %}
             <h2>{{events | length}} séances créées :</h2>
 

@@ -1,0 +1,22 @@
+main {
+  width: 80%;
+  margin: 50px auto;
+}
+
+.button-back {
+  margin-bottom: 20px;
+}
+
+.button-back:hover {
+  background-color: #e4e4e4;
+  border: 1px solid #e4e4e4;
+  color: inherit;
+}
+
+td a i {
+  color: rgb(74, 0, 170);
+}
+
+td:last-child {
+  padding-left: 20px;
+}
