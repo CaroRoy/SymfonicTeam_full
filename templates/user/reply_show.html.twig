@@ -11,31 +11,28 @@
 
     <main>
       <section>
-        <h2>{{events | length}} séances ont été proposées. Fais ton choix !</h2>
-
-        {% for e in events %}
         <article>
           <div class="top">
             <div class="gauche">
-              <h3>{{e.title}}</h3>
+              <h3>{{event.title}}</h3>
               <div>
                 <h6 class="m-0 me-2 p-0">Date :</h6>
-                <p class="m-0 p-0">{{e.meetingDatetime | date('d-m-Y, H:i:s')}}</p>
+                <p class="m-0 p-0">{{event.meetingDatetime | date('d-m-Y, H:i:s')}}</p>
               </div>
               <div>
                 <h6 class="m-0 me-2 p-0">Lieu :</h6>
-                <p class="m-0 p-0">{{e.meetingPlace}}, {{e.meetingPostalCode}}, {{e.meetingCity}}</p>
+                <p class="m-0 p-0">{{event.meetingPlace}}, {{event.meetingPostalCode}}, {{event.meetingCity}}</p>
               </div>
             </div>
             <div class="droite">
               <h6 class="me-1">Publié par :</h6>
 
               <div>
-                <p class="mb-0 pseudo">{{e.user.firstName}}</p>
+                <p class="mb-0 pseudo">{{event.user.firstName}}</p>
                 <img
                   class="button avatar"
-                  {% if e.user.avatar is not same as null %}
-                    src="{{e.user.avatar}}"
+                  {% if event.user.avatar is not same as null %}
+                    src="{{event.user.avatar}}"
                   {% else %}
                     src="{{asset('images/default-avatar.jpg')}}"
                   {% endif %}
@@ -46,33 +43,29 @@
           </div>
 
           <p class="message">
-            {{e.content}}
+            {{event.content}}
           </p>
 
           <div class="bas">
             <div>
               <h6 class="m-0 me-2 p-0">Instrument :</h6>
-              <p class="m-0 p-0">{{e.instrument}}</p>
+              <p class="m-0 p-0">{{event.instrument}}</p>
             </div>
             <div>
               <h6 class="m-0 me-2 p-0">Style de musique :</h6>
-              <p class="m-0 p-0">{{e.typeOfMusic}}</p>
+              <p class="m-0 p-0">{{event.typeOfMusic}}</p>
             </div>
           </div>
 
           <div class="boutons">
-            <a href="{{path('event_reply', {'id':e.id})}}" class="btn btn-primary">
-              <i class="fas fa-check"></i> J'y vais !
-            </a>
+            <button class="btn btn-dark" id="js-openModalDelete">
+                <i class="fas fa-trash-alt"></i> Je n'irai pas
+            </button>
           </div>
         </article>
-
-        {% endfor %}
       </section>
     </main>
 
-{% endblock %}
-
-{% block javascripts %}
-  <script src="{{asset('js/script_event_list.js')}}"></script>
+    {% include "shared/_modal/_delete_reply.html.twig" with {'id' : reply.id } %}
+    <script src={{asset('js/deleteModal.js')}}></script>
 {% endblock %}

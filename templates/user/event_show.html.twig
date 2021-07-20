@@ -57,7 +57,7 @@
       </section>
     </main>
 
-    {% include "shared/_modal_delete_event.html.twig" with {'id' : event.id }  %}
+    {% include "shared/_modal/_delete_event.html.twig" with {'id' : event.id }  %}
     <script src={{asset('js/deleteModal.js')}}></script>
 
 {% endblock %}

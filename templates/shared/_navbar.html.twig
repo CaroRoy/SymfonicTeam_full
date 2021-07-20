@@ -28,13 +28,24 @@
           <ul class="p-0 navbar-nav">
             {% if app.user %}
             
-              <li class="nav-item dropdown">
+              <li class="nav-item dropdown d-flex">
+              <img 
+                class="button avatar"
+                {% if app.user.avatar is not same as null %}
+                  src="{{app.user.avatar}}"
+                {% else %}
+                  src="{{asset('images/default-avatar.jpg')}}"
+                {% endif %}
+                alt="photo"
+              />
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Bonjour {{app.user.firstName}}
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="#">Mon compte</a></li>
-                  <li><a class="dropdown-item" href="{{path('user_event_list')}}">Mes séances</a></li>
+                  <li><a class="dropdown-item" href="{{path('user_event_list')}}">Séances que je propose</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="{{path('user_reply_list')}}">Séances auxquelles je participe</a></li>
                 </ul>
               </li>
 

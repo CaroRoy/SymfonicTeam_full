@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EventRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -62,6 +64,16 @@ class Event
      * @ORM\Column(type="string", length=255)
      */
     private $meetingPlace;
+
+    /**
+     * @ORM\OneToMany(targetEntity=ReplyEventUser::class, mappedBy="event", orphanRemoval=true)
+     */
+    private $replyEventUsers;
+
+    public function __construct()
+    {
+        $this->replyEventUsers = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -172,6 +184,36 @@ class Event
     public function setMeetingPlace(?string $meetingPlace): self
     {
         $this->meetingPlace = $meetingPlace;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ReplyEventUser[]
+     */
+    public function getReplyEventUsers(): Collection
+    {
+        return $this->replyEventUsers;
+    }
+
+    public function addReplyEventUser(ReplyEventUser $replyEventUser): self
+    {
+        if (!$this->replyEventUsers->contains($replyEventUser)) {
+            $this->replyEventUsers[] = $replyEventUser;
+            $replyEventUser->setEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReplyEventUser(ReplyEventUser $replyEventUser): self
+    {
+        if ($this->replyEventUsers->removeElement($replyEventUser)) {
+            // set the owning side to null (unless already changed)
+            if ($replyEventUser->getEvent() === $this) {
+                $replyEventUser->setEvent(null);
+            }
+        }
 
         return $this;
     }

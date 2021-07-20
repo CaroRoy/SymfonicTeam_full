@@ -15,21 +15,20 @@ class EventCreateController extends AbstractController {
      * @Route("nouvelle-seance", name="event_create")
      */
     public function create(Request $request, EntityManagerInterface $em, UserRepository $userRepository) : Response {
-        $email = $this->getUser()->getUsername();
-        $user = $userRepository->findBy(['email' => $email]);
-    
+        $user = $this->getUser();
+        
         $form = $this->createForm(EventType::class);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
             $event = $form->getData();
-            $event->setUser($user[0]);
+            $event->setUser($user);
             $em->persist($event);
             $em->flush();
 
             $this->addFlash('success','La séance a bien été publiée');
 
-            return $this->redirectToRoute('event_list');
+            return $this->redirectToRoute('user_event_list');
         }
 
         return $this->render('event/create.html.twig',['form' => $form->createView()]);

@@ -87,9 +87,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $createdEvents;
 
+    /**
+     * @ORM\OneToMany(targetEntity=ReplyEventUser::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $replyEventUsers;
+
     public function __construct()
     {
         $this->createdEvents = new ArrayCollection();
+        $this->replyEventUsers = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -301,6 +307,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($createdEvent->getUser() === $this) {
                 $createdEvent->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ReplyEventUser[]
+     */
+    public function getReplyEventUsers(): Collection
+    {
+        return $this->replyEventUsers;
+    }
+
+    public function addReplyEventUser(ReplyEventUser $replyEventUser): self
+    {
+        if (!$this->replyEventUsers->contains($replyEventUser)) {
+            $this->replyEventUsers[] = $replyEventUser;
+            $replyEventUser->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReplyEventUser(ReplyEventUser $replyEventUser): self
+    {
+        if ($this->replyEventUsers->removeElement($replyEventUser)) {
+            // set the owning side to null (unless already changed)
+            if ($replyEventUser->getUser() === $this) {
+                $replyEventUser->setUser(null);
             }
         }
 
