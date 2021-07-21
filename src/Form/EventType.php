@@ -38,9 +38,10 @@ class EventType extends AbstractType
                 ]
             ])
             ->add('instrument', ChoiceType::class, [
-                'label' => 'Instrument  dont tu joueras pendant cette séance :',
+                'label' => 'Instrument que tu proposes pour cette séance :',
                 'placeholder' => 'sélectionne ici un instrument',
                 'choices' => [
+                    'aucun' => 'aucun en particulier',
                     'guitare' => 'guitare',
                     'banjo' => 'banjo',
                     'ukulele' => 'ukulele',

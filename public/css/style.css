@@ -48,6 +48,48 @@ body {
   border: rgb(111, 27, 221) 1px solid;
 }
 
+.button-back {
+  margin-bottom: 20px;
+}
+
+.button-back:hover {
+  background-color: #e4e4e4;
+  border: 1px solid #e4e4e4;
+  color: inherit;
+}
+
+.btn-dark:hover {
+  background-color: #363636;
+  border: 1px solid #363636;
+}
+
+.btn-danger:hover {
+  background-color: #e7192e;
+  border: 1px solid #e7192e;
+}
+
+.btn-light:hover {
+  background-color: #e4e4e4;
+  border: 1px solid #e4e4e4;
+  color: inherit;
+}
+
+.btn-success {
+  background-color: rgb(14, 180, 14);
+  border: 1px solid rgb(14, 180, 14);
+}
+
+.btn-success:hover {
+  background-color: rgb(58, 216, 58);
+  border: 1px solid rgb(58, 216, 58);
+}
+
+.btn-warning:hover {
+  background-color: #fdcc38;
+  border: 1px solid #fdcc38;
+  color: inherit;
+}
+
 /*------------------------------------------------------NAV-------------------------------------------------*/
 
 nav h4 {

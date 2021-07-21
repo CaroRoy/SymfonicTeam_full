@@ -1,0 +1,49 @@
+{% apply inline_css %}
+    <style>
+        {# here, define your CSS styles as usual #}
+        @import url('https://fonts.googleapis.com/css2?family=Sansita&display=swap');
+
+        div {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+            Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        }
+
+        .divTitle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            font-family: "Sansita", sans-serif;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .h3 {
+            text-align: center;
+        }
+
+    </style>
+
+{% endapply %}
+
+<div class="divTitle">
+    <h1>Symfonic Team</h1>
+</div>
+
+<div class="divText">
+    <h3>
+        Bonjour {{user.firstName}},
+    </h3>
+    <p>Nous avons le regret de t'informer que tu ne fais plus partie des administrateurs du site.</p>
+    <p>Après constatation de certains abus de ta part, nous ne pouvons malheureusement plus te faire confiance et {{admin.firstName}} {{admin.lastName}} a pris la décision de te rétrograder.</p>
+    <p>Si tu penses que c'est une erreur, merci de nous contacter afin d'éclaircir la situation.</p>
+    <p>Tu conserves bien entendu ton compte sur notre plateforme et tu peux continuer à t'inscrire à des séances et en créer de nouvelles.</p>
+    <p>
+        A très vite,
+        <br>
+        L'équipe Symfonic Team
+    </p>
+</div>
+

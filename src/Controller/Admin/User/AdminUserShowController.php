@@ -1,6 +1,6 @@
 <?php 
 
-namespace App\Controller\Admin;
+namespace App\Controller\Admin\User;
 
 use App\Repository\UserRepository;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,7 +14,8 @@ class AdminUserShowController extends AbstractController
     public function show(int $id, UserRepository $userRepository) {
         $user = $userRepository->find($id);
         $events = $user->getCreatedEvents();
+        $replys = $user->getReplyEventUsers();
     
-        return $this->render('admin/user_show.html.twig',['user' => $user, 'events' => $events]);
+        return $this->render('admin/user_show.html.twig',['user' => $user, 'events' => $events, 'replys' => $replys]);
     }
 }

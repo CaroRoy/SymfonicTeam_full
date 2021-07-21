@@ -16,9 +16,32 @@
                 <i class="fas fa-angle-double-left"></i> Retour
             </a>
 
+            <h1 class="text-center pb-5">Détails utilisateur</h1>
             <div class="card">
                 <div class="card-header">
-                    <h3>{{user.firstName}} {{user.lastName}}</h3>
+                    <h3>Informations personnelles</h3>
+                </div>
+                <div class="card-body">
+                    <h5>{{user.firstName}} {{user.lastName}}</h5>
+                    <p>Email : {{user.email}}</p>
+                    <p>Adresse : {{user.street}}, {{user.postalCode}} {{user.city}}</p>
+                    <p>Date de naissance : {{user.birthdate | date('d/m/Y')}}</p>
+                </div>
+            </div>
+ 
+            <div class="card">
+                <div class="card-header">
+                    <h3>Statistiques</h3>
+                </div>
+                <div class="card-body">
+                    <p>Nombre de séances publiées : {{events | length}}</p>
+                    <p>Nombre d'inscriptions à des séances : {{replys | length}}</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <h3>Rôle</h3>
                 </div>
                 <div class="card-body">
                     <p>
@@ -29,40 +52,15 @@
                             <td>Administrateur</td>
                         {% endif %}
                     </p>
-                    <p>Email : {{user.email}}</p>
-                    <p>Adresse : {{user.street}}, {{user.postalCode}} {{user.city}}</p>
-                </div>
-            </div>
- 
-            <div class="card">
-                <div class="card-header">
-                    <h3>Statistiques</h3>
-                </div>
-                <div class="card-body">
-                    <p>Nombre de séances publiées : {{ events | length}}</p>
-                </div>
-            </div>
-
-            {# <div class="card">
-                <div class="card-header d-flex align-items-center justify-content-between">
-                    <h3>Assigner un nouveau rôle</h3>
-                </div>
-                <div class="card-body">
-                    <p>Attention : Un utilisateur ne peut avoir qu'un seul rôle.</p>
+                    <p><em>Attention : Un utilisateur ne peut avoir qu'un seul rôle</em></p>
                     {% if user.roles[0] is same as "ROLE_USER" %}
-                        <a class="btn btn-sm btn-info" href="{{ path('admin_user_role_author',{'id' : user.id }) }}">Assigner rôle : auteur</a>
-                        <a class="btn btn-sm btn-info" href="{{ path('admin_user_role_moderator',{'id' : user.id }) }}">Assigner rôle : modérateur</a>
+                        <a class="btn btn-sm btn-primary" href="{{ path('admin_set_role',{'id' : user.id }) }}">Attribuer le rôle ADMIN</a>
                     {% endif %}
-                      {% if user.roles[0] is same as "ROLE_AUTHOR" %}
-                        <a class="btn btn-sm btn-danger" href="{{ path('admin_user_role_delete',{'id' : user.id }) }}">Retirer rôle : auteur</a>
-                        <a class="btn btn-sm btn-info" href="{{ path('admin_user_role_moderator',{'id' : user.id }) }}">Assigner rôle : modérateur</a>
-                    {% endif %}
-                    {% if user.roles[0] is same as "ROLE_MODERATOR" %}
-                        <a class="btn btn-sm btn-info" href="{{ path('admin_user_role_author',{'id' : user.id })}}">Assigner rôle : auteur</a>
-                        <a class="btn btn-sm btn-danger" href="{{ path('admin_user_role_delete',{'id' : user.id }) }}">Retirer rôle : modérateur</a>
+                    {% if user.roles[0] is same as "ROLE_ADMIN" %}
+                        <a class="btn btn-sm btn-danger" href="{{ path('admin_delete_role',{'id' : user.id }) }}">Supprimer le rôle ADMIN</a>
                     {% endif %}
                 </div>
-            </div> #}
+            </div>
         </section>
     </main>
 {% endblock %}
