@@ -39,7 +39,7 @@ class EmailService {
         $this->mailer->send($email);
     }
     
-    public function sendNotificationNewParticipant(Event $event,User $user) {
+    public function sendNotificationNewParticipant(Event $event, User $user) {
         $email = (new TemplatedEmail())
             ->from('info@symfonic-team.fr')
             ->to($user->getEmail())
@@ -48,5 +48,19 @@ class EmailService {
             ->context(['user' => $user, 'event' => $event]);
 
         $this->mailer->send($email);
-    }    
+    }
+
+    public function sendNotificationEventDeleted(Event $event, array $participants) {
+        foreach ($participants as $p) {
+            $email = (new TemplatedEmail())
+                ->from('info@symfonic-team.fr')
+                ->to($p->getEmail())
+                ->subject('La séance "' . $event->getTitle() . '" est annulée')
+                ->htmlTemplate('email/event_deleted.html.twig')
+                ->context(['user' => $p, 'event' => $event]);
+
+            $this->mailer->send($email);
+
+        }
+    }      
 }

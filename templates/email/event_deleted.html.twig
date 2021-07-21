@@ -36,10 +36,13 @@
     <h3>
         Bonjour {{user.firstName}},
     </h3>
-    <p>Nous avons le regret de t'informer que tu ne fais plus partie des administrateurs du site.</p>
-    <p>Après constatation de certains abus de ta part, nous ne pouvons malheureusement plus te faire confiance et {{admin.firstName}} a pris la décision de te rétrograder.</p>
-    <p>Si tu penses que c'est une erreur, merci de nous contacter afin d'éclaircir la situation.</p>
-    <p>Tu conserves bien entendu ton compte sur notre plateforme et tu peux continuer à t'inscrire à des séances et en créer de nouvelles.</p>
+    <p>Nous avons le regret de t'informer que la séance "{{event.title}}" <strong><u>a été annulée</u></strong>.</p>
+    <p>
+        Séance : "{{event.title}}", créée par {{event.user.firstName}},
+        <br>
+        initialement prévue le {{event.meetingDatetime | date('d/m/Y')}} à {{event.meetingPlace}}, {{event.meetingPostalCode}} {{event.meetingCity}}
+    </p>
+    <p>N'hésite pas à t'inscrire à d'autres séances, ou à en proposer une toi-même.</p>
     <p>
         A très vite,
         <br>
