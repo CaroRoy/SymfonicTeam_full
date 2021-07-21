@@ -17,6 +17,17 @@ class EmailService {
         $this->twig = $twig;
     }
     
+    public function sendWelcome(User $user) {
+        $email = (new TemplatedEmail())
+            ->from('info@symfonic-team.fr')
+            ->to($user->getEmail())
+            ->subject('Bienvenue sur Symfonic Team')
+            ->htmlTemplate('email/welcome.html.twig')
+            ->context(['user' => $user]);
+
+        $this->mailer->send($email);
+    }
+    
     public function sendNotificationRoleAdminSet(User $user, User $admin) {
         $email = (new TemplatedEmail())
             ->from('info@symfonic-team.fr')

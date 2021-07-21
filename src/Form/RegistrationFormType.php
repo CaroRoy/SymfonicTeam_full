@@ -23,7 +23,6 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('firstName', TextType::class, ['label' => 'Prénom :', 'required' => true])
             ->add('lastName', TextType::class, ['label' => 'Nom :', 'required' => true])
-            ->add('pseudo', TextType::class, ['label' => 'Nom d\'utilisateur :', 'required' => true])
             ->add('avatar',FileType::class, ['label' => 'Photo de profil :', 'mapped' => false, 'required' => false])
             ->add('birthdate', DateType::class, ['label' => 'Date de naissance :', 'required' => true, 'widget' => 'single_text'])
             ->add('street', TextType::class, ['label' => 'Adresse :', 'required' => true])
