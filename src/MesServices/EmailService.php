@@ -3,6 +3,7 @@
 namespace App\MesServices;
 
 use App\Entity\User;
+use App\Entity\Event;
 use Twig\Environment;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\MailerInterface;
@@ -34,6 +35,17 @@ class EmailService {
             ->subject('Tu n\'es plus administrateur')
             ->htmlTemplate('email/role_delete_admin.html.twig')
             ->context(['user' => $user, 'admin' => $admin]);
+
+        $this->mailer->send($email);
+    }
+    
+    public function sendNotificationNewParticipant(Event $event,User $user) {
+        $email = (new TemplatedEmail())
+            ->from('info@symfonic-team.fr')
+            ->to($user->getEmail())
+            ->subject('Un nouveau participant à ta séance "' . $event->getTitle() . '"')
+            ->htmlTemplate('email/event_new_participant.html.twig')
+            ->context(['user' => $user, 'event' => $event]);
 
         $this->mailer->send($email);
     }    
