@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class UserReplyDeleteController extends AbstractController {
+class UserParticipateDeleteController extends AbstractController {
     /**
      * @Route("/mes-participations/supprimer/seance-{id}", name="user_reply_delete")
      */

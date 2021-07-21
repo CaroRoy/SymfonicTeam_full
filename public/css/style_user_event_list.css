@@ -32,6 +32,11 @@ article {
   margin-bottom: 5px;
 }
 
+.bas div:last-child {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .boutons {
   margin-top: 20px;
 }

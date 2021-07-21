@@ -23,7 +23,7 @@ class EventType extends AbstractType
             ->add('meetingPlace', TextType::class, ['label' => 'Lieu exact du rdv (ex: devant la gare, sur le parvis de l\'hôtel de ville...) :'])
             ->add('typeOfMusic', ChoiceType::class, [
                 'label' => 'Style(s) de musique que tu proposes pour cette séance :',
-                'placeholder' => 'sélectionne ici un style de musique',
+                'required' => false,
                 'choices' => [
                     'tous' => 'tous',
                     'rock\'n\'roll' => 'rock\'n\'roll',
@@ -35,13 +35,15 @@ class EventType extends AbstractType
                     'metal' => 'metal',
                     'variété française' => 'variété française',
                     'autres' => 'autres'
-                ]
+                ],
+                'empty_data' => 'tous',
+                // 'multiple' => true
             ])
             ->add('instrument', ChoiceType::class, [
                 'label' => 'Instrument que tu proposes pour cette séance :',
-                'placeholder' => 'sélectionne ici un instrument',
+                'required' => false,
                 'choices' => [
-                    'aucun' => 'aucun en particulier',
+                    'tous' => 'tous',
                     'guitare' => 'guitare',
                     'banjo' => 'banjo',
                     'ukulele' => 'ukulele',
@@ -57,8 +59,10 @@ class EventType extends AbstractType
                     'jumbo' => 'jumbo',
                     'trompette' => 'trompette',
                     'cornemuse' => 'cornemuse'
-
-                ]
+                ],
+                'empty_data' => 'tous',
+                // 'multiple' => true
+                // 'expanded' => true
             ])
             ->add('content', TextareaType::class, ['label' => 'Donne un peu plus de détails ici :'])
         ;

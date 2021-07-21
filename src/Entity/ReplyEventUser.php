@@ -10,6 +10,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ReplyEventUser
 {
+    const OK = 'ok';
+    const INTERESTED = 'interested';
+    
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -28,6 +31,11 @@ class ReplyEventUser
      * @ORM\JoinColumn(nullable=false)
      */
     private $event;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $replyType;
 
     public function getId(): ?int
     {
@@ -54,6 +62,18 @@ class ReplyEventUser
     public function setEvent(?Event $event): self
     {
         $this->event = $event;
+
+        return $this;
+    }
+
+    public function getReplyType(): ?string
+    {
+        return $this->replyType;
+    }
+
+    public function setReplyType(string $replyType): self
+    {
+        $this->replyType = $replyType;
 
         return $this;
     }

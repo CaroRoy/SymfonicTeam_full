@@ -57,6 +57,34 @@
             </div>
           </div>
 
+          <hr>
+          
+          <div>
+              {% if participants | length > 0 %}
+                  <h6 class="m-0 me-2 mb-3 p-0">Liste des participants à cette séance :</h6>
+                  <ul class="d-flex">
+                      {% for p in participants %}
+                          <li class="me-5 d-flex flex-column align-items-center">
+                              <img 
+                                  class="button avatar"
+                                  {% if p.user.avatar is not same as null %}
+                                  src="{{p.user.avatar}}"
+                                  {% else %}
+                                  src="{{asset('images/default-avatar.jpg')}}"
+                                  {% endif %}
+                                  alt="photo"
+                              >
+                              <p>{{p.user.firstName}}</p>
+                          </li>
+                      {% endfor %}
+                  </ul>
+              {% else %}
+                  <h6>Aucun participant pour le moment</h6>
+              {% endif %}
+          </div>
+
+          <hr>
+
           <div class="boutons">
             <button class="btn btn-dark" id="js-openModalDelete">
                 <i class="fas fa-trash-alt"></i> Je n'irai pas

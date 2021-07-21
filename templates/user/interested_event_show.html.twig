@@ -1,0 +1,99 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="{{asset('css/style_event_list.css')}}">
+{% endblock %}
+
+{% block body %}   
+  <div class="flash">
+      {% include "shared/_messages_flash.html.twig" %}
+  </div>
+
+    <main>
+      <section>
+        <article>
+          <div class="top">
+            <div class="gauche">
+              <h3>{{event.title}}</h3>
+              <div>
+                <h6 class="m-0 me-2 p-0">Date :</h6>
+                <p class="m-0 p-0">le {{event.meetingDatetime | date('d/m/Y')}} à {{event.meetingDatetime | date('H:i')}}</p>
+              </div>
+              <div>
+                <h6 class="m-0 me-2 p-0">Lieu :</h6>
+                <p class="m-0 p-0">{{event.meetingPlace}}, {{event.meetingPostalCode}}, {{event.meetingCity}}</p>
+              </div>
+            </div>
+            <div class="droite">
+              <h6 class="me-1">Publié par :</h6>
+
+              <div>
+                <p class="mb-0 pseudo">{{event.user.firstName}}</p>
+                <img
+                  class="button avatar"
+                  {% if event.user.avatar is not same as null %}
+                    src="{{event.user.avatar}}"
+                  {% else %}
+                    src="{{asset('images/default-avatar.jpg')}}"
+                  {% endif %}
+                  alt="photo"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="bas">
+            <div>
+              <h6 class="m-0 me-2 p-0">Instrument :</h6>
+              <p class="m-0 p-0">{{event.instrument}}</p>
+            </div>
+            <div>
+              <h6 class="m-0 me-2 p-0">Style de musique :</h6>
+              <p class="m-0 p-0">{{event.typeOfMusic}}</p>
+            </div>
+            <div>
+              <h6 class="m-0 me-2 p-0">Infos supplémentaires :</h6>
+              <p class="m-0 p-0">{{event.content}}</p>
+            </div>
+          </div>
+
+          <hr>
+          
+          <div>
+              {% if participants | length > 0 %}
+                  <h6 class="m-0 me-2 mb-3 p-0">Liste des participants à cette séance :</h6>
+                  <ul class="d-flex">
+                      {% for p in participants %}
+                          <li class="me-5 d-flex flex-column align-items-center">
+                              <img 
+                                  class="button avatar"
+                                  {% if p.user.avatar is not same as null %}
+                                  src="{{p.user.avatar}}"
+                                  {% else %}
+                                  src="{{asset('images/default-avatar.jpg')}}"
+                                  {% endif %}
+                                  alt="photo"
+                              >
+                              <p>{{p.user.firstName}}</p>
+                          </li>
+                      {% endfor %}
+                  </ul>
+              {% else %}
+                  <h6>Aucun participant pour le moment</h6>
+              {% endif %}
+          </div>
+
+          {# <hr>
+
+          <div class="boutons">
+            <button class="btn btn-dark" id="js-openModalDelete">
+                <i class="fas fa-trash-alt"></i> Je n'irai pas
+            </button>
+          </div> #}
+        </article>
+      </section>
+    </main>
+
+    {% include "shared/_modal/_delete_reply.html.twig" with {'id' : reply.id } %}
+    <script src={{asset('js/deleteModal.js')}}></script>
+{% endblock %}

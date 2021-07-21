@@ -11,21 +11,21 @@
 
     <main>
       <section>
-        {% if events | length > 0 %}
-            <h2>Tu as créé {{events | length}} séance(s) :</h2>
+        {% if replys | length > 0 %}
+            <h2>Tu as {{replys | length}} séance(s) enregistrée(s) :</h2>
 
-            {% for e in events %}
+            {% for r in replys %}
                 <article>
                     <div class="top">
-                    <h3>{{e.title}}</h3>
+                    <h3>{{r.event.title}}</h3>
                     <div>
                         <h6 class="m-0 me-2 p-0">Date :</h6>
-                        <p class="m-0 p-0">le {{e.meetingDatetime | date('d/m/Y')}} à {{e.meetingDatetime | date('H:i')}}</p>
+                        <p class="m-0 p-0">le {{r.event.meetingDatetime | date('d/m/Y')}} à {{r.event.meetingDatetime | date('H:i')}}</p>
                     </div>
                     <div>
                         <h6 class="m-0 me-2 p-0">Lieu :</h6>
                         <p class="m-0 p-0">
-                        {{e.meetingPlace}}, {{e.meetingPostalCode}}, {{e.meetingCity}}
+                        {{r.event.meetingPlace}}, {{r.event.meetingPostalCode}}, {{r.event.meetingCity}}
                         </p>
                     </div>
                     </div>
@@ -33,20 +33,20 @@
                     <div class="bas">
                         <div>
                             <h6 class="m-0 me-2 p-0">Instrument :</h6>
-                            <p class="m-0 p-0">{{e.instrument}}</p>
+                            <p class="m-0 p-0">{{r.event.instrument}}</p>
                         </div>
                         <div>
                             <h6 class="m-0 me-2 p-0">Style de musique :</h6>
-                            <p class="m-0 p-0">{{e.typeOfMusic}}</p>
+                            <p class="m-0 p-0">{{r.event.typeOfMusic}}</p>
                         </div>
                         <div>
                             <h6 class="m-0 me-2 p-0">Infos supplémentaires :</h6>
-                            <p class="m-0 p-0">{{e.content}}</p>
+                            <p class="m-0 p-0">{{r.event.content}}</p>
                         </div>
                     </div>
 
                     <div class="boutons">
-                        <a href="{{path('user_event_show', {'id' : e.id })}}" class="btn btn-primary">
+                        <a href="{{path('user_interested_show', {'id' : r.id })}}" class="btn btn-primary">
                             <i class="fas fa-info-circle"></i> Détails
                         </a>
                     </div>
@@ -55,8 +55,8 @@
 
         {% else %}
             <div class="no-event">
-                <h5>Tu n'as pas encore créé de séance</h5>
-                <a href="{{path('event_create')}}" class="btn btn-primary">Je propose une nouvelle séance !</a>
+                <h5>Tu ne participes à aucune séance pour le moment</h5>
+                <a href="{{path('event_list')}}" class="btn btn-primary">Consulter les séances !</a>
             </div>
         {% endif %}
       </section>

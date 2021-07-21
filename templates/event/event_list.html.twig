@@ -62,8 +62,11 @@
           </div>
 
           <div class="boutons">
-            <a href="{{path('event_reply', {'id':e.id})}}" class="btn btn-primary">
+            <a href="{{path('event_reply_participate', {'id':e.id})}}" class="btn btn-primary">
               <i class="fas fa-check"></i> J'y vais !
+            </a>
+            <a href="{{path('event_reply_interested', {'id':e.id})}}" class="btn btn-warning">
+              <i class="fas fa-star"></i> Ça m'intéresse
             </a>
           </div>
         </article>

@@ -2,18 +2,21 @@
 
 namespace App\Controller\User\Reply;
 
+use App\Entity\ReplyEventUser;
 use App\Repository\ReplyEventUserRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class UserReplyShowController extends AbstractController {
+class UserInterestedShowController extends AbstractController {
     /**
-     * @Route("mes-participations/details/seance-{id}", name="user_reply_show")
+     * @Route("mes-favoris/details/seance-{id}", name="user_interested_show")
      */
     public function show(int $id, ReplyEventUserRepository $replyEventUserRepository) : Response {
         $user = $this->getUser();
         $reply = $replyEventUserRepository->find($id);
+        $event = $reply->getEvent();
+        $participants = $replyEventUserRepository->findBy(['event' => $event, 'replyType' => ReplyEventUser::OK]);
 
         if (!$reply) {
             $this->addFlash('warning','Cette séance n\'existe pas');
@@ -27,6 +30,6 @@ class UserReplyShowController extends AbstractController {
 
         $event = $reply->getEvent();
 
-        return $this->render("user/reply_show.html.twig",['reply' => $reply, 'event' => $event]);
+        return $this->render("user/interested_event_show.html.twig",['reply' => $reply, 'event' => $event, 'participants' => $participants]);
     }
 }

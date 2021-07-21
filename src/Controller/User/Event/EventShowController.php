@@ -2,6 +2,7 @@
 
 namespace App\Controller\User\Event;
 
+use App\Entity\ReplyEventUser;
 use App\Repository\EventRepository;
 use App\Repository\ReplyEventUserRepository;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,7 +16,7 @@ class EventShowController extends AbstractController {
     public function show(int $id, EventRepository $eventRepository, ReplyEventUserRepository $replyEventUserRepository) : Response {
         $user = $this->getUser();
         $event = $eventRepository->find($id);
-        $replys = $replyEventUserRepository->findBy(['event' => $event]);
+        $replys = $replyEventUserRepository->findBy(['event' => $event, 'replyType' => ReplyEventUser::OK]);
 
         if (!$event) {
             $this->addFlash('warning','Cette séance n\'existe pas');

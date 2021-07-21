@@ -10,9 +10,9 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class ReplyEventUserCreateController extends AbstractController {
+class ReplyEventUserParticipateController extends AbstractController {
     /**
-     * @Route("seance-{id}/participation", name="event_reply")
+     * @Route("seance-{id}/participation", name="event_reply_participate")
      */
     public function participate(int $id, EventRepository $eventRepository, ReplyEventUserRepository $replyEventUserRepository,EntityManagerInterface $em, EmailService $emailService) {
         $user = $this->getUser();
@@ -37,6 +37,8 @@ class ReplyEventUserCreateController extends AbstractController {
         $reply = new ReplyEventUser;
         $reply->setUser($user);
         $reply->setEvent($event);
+        $reply->setReplyType($reply::OK);
+
         $em->persist($reply);
         $em->flush();
 

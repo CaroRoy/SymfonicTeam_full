@@ -12,7 +12,7 @@
     <main>
       <section>
         {% if replys | length > 0 %}
-            <h2>Tu as créé {{replys | length}} séances :</h2>
+            <h2>Tu t'es inscrit(e) à {{replys | length}} séance(s) :</h2>
 
             {% for r in replys %}
                 <article>
@@ -46,7 +46,7 @@
                     </div>
 
                     <div class="boutons">
-                        <a href="{{path('user_reply_show', {'id' : r.id })}}" class="btn btn-primary">
+                        <a href="{{path('user_interested_show', {'id' : r.id })}}" class="btn btn-primary">
                             <i class="fas fa-info-circle"></i> Détails
                         </a>
                     </div>
