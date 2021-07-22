@@ -16,7 +16,7 @@ class AdminEventDeleteController extends AbstractController {
      */
     public function delete(int $id, EventRepository $eventRepository,ReplyEventUserRepository $replyEventUserRepository ,EntityManagerInterface $em, EmailService $emailService) : RedirectResponse {
         $event = $eventRepository->find($id);
-
+        $user = $event->getUser();
         $replys = $replyEventUserRepository->findBy(['event' => $event]);
 
         $participants = [];
@@ -38,6 +38,7 @@ class AdminEventDeleteController extends AbstractController {
         $em->flush();
 
         $emailService->sendNotificationEventDeleted($event, $participants);
+        $emailService->sendNotificationAdminEventDeleted($event, $user);
         $this->addFlash('success','La séance a bien été supprimée');
         return $this->redirectToRoute('admin_event_list');
     }

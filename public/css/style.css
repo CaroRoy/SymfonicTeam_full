@@ -96,7 +96,8 @@ nav h4 {
   font-family: "Sansita", sans-serif;
 }
 
-#menu .nav-link:hover {
+#menu .nav-link:hover,
+#admin:hover {
   color: rgb(74, 0, 170);
 }
 

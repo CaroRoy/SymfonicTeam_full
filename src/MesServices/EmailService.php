@@ -61,6 +61,18 @@ class EmailService {
         $this->mailer->send($email);
     }
 
+    public function sendNotificationAdminEventDeleted(Event $event, User $user) {
+        $email = (new TemplatedEmail())
+            ->from('info@symfonic-team.fr')
+            ->to($user->getEmail())
+            ->subject('Ta séance "' . $event->getTitle() . '" a été supprimée')
+            ->htmlTemplate('email/admin_event_deleted.html.twig')
+            ->context(['user' => $user, 'event' => $event]);
+
+        $this->mailer->send($email);
+    }
+
+
     public function sendNotificationEventDeleted(Event $event, array $participants) {
         foreach ($participants as $p) {
             $email = (new TemplatedEmail())
