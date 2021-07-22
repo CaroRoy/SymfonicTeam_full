@@ -22,7 +22,7 @@ class EventType extends AbstractType
             ->add('meetingCity', TextType::class, ['label' => 'Ville :'])
             ->add('meetingPlace', TextType::class, ['label' => 'Lieu exact du rdv (ex: devant la gare, sur le parvis de l\'hôtel de ville...) :'])
             ->add('typeOfMusic', ChoiceType::class, [
-                'label' => 'Style(s) de musique que tu proposes pour cette séance :',
+                'label' => 'Style(s) de musique que tu proposes pour cette séance (CTRL+clic pour en sélectionner plusieurs) :',
                 'required' => false,
                 'choices' => [
                     'tous' => 'tous',
@@ -37,10 +37,10 @@ class EventType extends AbstractType
                     'autres' => 'autres'
                 ],
                 'empty_data' => 'tous',
-                // 'multiple' => true
+                'multiple' => true
             ])
             ->add('instrument', ChoiceType::class, [
-                'label' => 'Instrument que tu proposes pour cette séance :',
+                'label' => 'Instrument(s) que tu proposes pour cette séance (CTRL+clic pour en sélectionner plusieurs) :',
                 'required' => false,
                 'choices' => [
                     'tous' => 'tous',
@@ -61,7 +61,7 @@ class EventType extends AbstractType
                     'cornemuse' => 'cornemuse'
                 ],
                 'empty_data' => 'tous',
-                // 'multiple' => true
+                'multiple' => true
                 // 'expanded' => true
             ])
             ->add('content', TextareaType::class, ['label' => 'Donne un peu plus de détails ici :'])

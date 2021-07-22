@@ -32,12 +32,20 @@
 
                     <div class="bas">
                         <div>
-                            <h6 class="m-0 me-2 p-0">Instrument :</h6>
-                            <p class="m-0 p-0">{{e.instrument}}</p>
+                            <h6 class="m-0 me-2 p-0">Instrument(s) :</h6>
+                            <p class="m-0 p-0">
+                                {% for i in e.instrument %}
+                                    {{i}} 
+                                {% endfor %}               
+                            </p>
                         </div>
                         <div>
-                            <h6 class="m-0 me-2 p-0">Style de musique :</h6>
-                            <p class="m-0 p-0">{{e.typeOfMusic}}</p>
+                            <h6 class="m-0 me-2 p-0">Style(s) de musique :</h6>
+                            <p class="m-0 p-0">
+                                {% for type in e.typeOfMusic %}
+                                {{type}} 
+                                {% endfor %}
+                            </p>
                         </div>
                         <div>
                             <h6 class="m-0 me-2 p-0">Infos supplémentaires :</h6>

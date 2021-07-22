@@ -45,12 +45,12 @@ class Event
     private $meetingCity;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="array", nullable=true)
      */
     private $typeOfMusic;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="array", nullable=true)
      */
     private $instrument;
 
@@ -140,24 +140,24 @@ class Event
         return $this;
     }
 
-    public function getTypeOfMusic(): ?string
+    public function getTypeOfMusic()
     {
         return $this->typeOfMusic;
     }
 
-    public function setTypeOfMusic(?string $typeOfMusic): self
+    public function setTypeOfMusic($typeOfMusic): self
     {
         $this->typeOfMusic = $typeOfMusic;
 
         return $this;
     }
 
-    public function getInstrument(): ?string
+    public function getInstrument()
     {
         return $this->instrument;
     }
 
-    public function setInstrument(?string $instrument): self
+    public function setInstrument($instrument): self
     {
         $this->instrument = $instrument;
 

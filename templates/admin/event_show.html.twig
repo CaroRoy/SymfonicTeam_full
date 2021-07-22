@@ -43,14 +43,22 @@
                 </div>
 
                 <div class="bas">
-                    <div>
-                        <h6 class="m-0 me-2 p-0">Instrument :</h6>
-                        <p class="m-0 p-0">{{event.instrument}}</p>
-                    </div>
-                    <div>
-                        <h6 class="m-0 me-2 p-0">Style de musique :</h6>
-                        <p class="m-0 p-0">{{event.typeOfMusic}}</p>
-                    </div>
+                        <div>
+                            <h6 class="m-0 me-2 p-0">Instrument(s) :</h6>
+                            <p class="m-0 p-0">
+                                {% for i in event.instrument %}
+                                    {{i}}  
+                                {% endfor %}               
+                            </p>
+                        </div>
+                        <div>
+                            <h6 class="m-0 me-2 p-0">Style(s) de musique :</h6>
+                            <p class="m-0 p-0">
+                                {% for type in event.typeOfMusic %}
+                                    {{type}}  
+                                {% endfor %}
+                            </p>
+                        </div>
                     <div>
                         <h6 class="m-0 me-2 p-0">Infos supplémentaires :</h6>
                         <p class="m-0 p-0">{{event.content}}</p>
