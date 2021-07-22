@@ -11,6 +11,11 @@
 
     <main>
       <section>
+
+        <a href="{{path('user_private_space')}}" class="btn btn-light button-back">
+          <i class="fas fa-angle-double-left"></i> Retour
+        </a>
+
         {% if replys | length > 0 %}
             <h2>Tu t'es inscrit(e) à {{replys | length}} séance(s) :</h2>
 

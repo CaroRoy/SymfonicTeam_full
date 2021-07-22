@@ -1,0 +1,54 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('css/style_admin_home.css')}}">
+{% endblock %}
+
+{% block body %}
+    <div class="flash">
+        {% include "shared/_messages_flash.html.twig" %}
+    </div>
+
+    <main>
+        <div class="row">
+            <div class="col-7 mx-auto">
+                <div class="card">
+                    <div class="card-header d-flex align-items-center justify-content-between">
+                        <h3>Les séances que je propose</h3>
+                    </div>
+                    <div class="card-body">
+                        <a class="btn btn-primary btn-sm" href="{{path('user_event_list')}}">Entrer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-7 mx-auto">
+                <div class="card">
+                    <div class="card-header d-flex align-items-center justify-content-between">
+                        <h3>Les séances qui m'intéressent</h3>
+                    </div>
+                    <div class="card-body">
+                        <a class="btn btn-primary btn-sm" href="{{path('user_interested_list')}}">Entrer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-7 mx-auto">
+                <div class="card">
+                    <div class="card-header d-flex align-items-center justify-content-between">
+                        <h3>Les séances auxquelles je participe</h3>
+                    </div>
+                    <div class="card-body">
+                        <a class="btn btn-primary btn-sm" href="{{path('user_participate_list')}}">Entrer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+{% endblock %}

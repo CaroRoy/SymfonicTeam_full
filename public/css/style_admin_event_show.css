@@ -47,7 +47,7 @@ article img {
   object-fit: contain;
   border-radius: 10px;
   box-shadow: 0 0 15px rgb(179, 179, 179);
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .boutons {
