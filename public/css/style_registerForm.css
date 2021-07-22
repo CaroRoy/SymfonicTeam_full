@@ -98,6 +98,15 @@ form .update {
   width: 250px;
 }
 
+main a {
+  color: rgb(74, 0, 170);
+  font-weight: bold;
+}
+
+main a:hover {
+  color: rgb(111, 27, 221);
+}
+
 /*-----------------------------------------------MOBILE RESPONSIVE------------------------------------------------*/
 
 @media screen and (max-width: 768px) {
