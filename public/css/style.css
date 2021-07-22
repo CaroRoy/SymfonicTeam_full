@@ -30,6 +30,20 @@ body {
   margin: 20px auto;
 }
 
+.pagination .page-item.active .page-link {
+  background-color: rgb(74, 0, 170);
+  border: rgb(74, 0, 170) 1px solid;
+  color: rgb(243, 243, 243);
+}
+
+.pagination .page-item.disabled .page-link {
+  color: rgb(158, 158, 158);
+}
+
+.pagination .page-item .page-link {
+  color: rgb(74, 0, 170);
+}
+
 /*------------------------------------------BOUTONS----------------------------------------------*/
 
 .btn-primary {

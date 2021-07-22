@@ -11,7 +11,9 @@
 
     <main>
       <section>
-        <h2>{{events | length}} séances ont été proposées. Fais ton choix !</h2>
+        <h2>{{all | length}} séances ont été proposées. Fais ton choix !</h2>
+
+        {{knp_pagination_render(events)}}
 
         {% for e in events %}
         <article>
@@ -80,6 +82,9 @@
         </article>
 
         {% endfor %}
+
+        {{knp_pagination_render(events)}}
+        
       </section>
     </main>
 
