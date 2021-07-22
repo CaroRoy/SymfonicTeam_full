@@ -30,8 +30,19 @@ class ReplyEventUserParticipateController extends AbstractController {
         }
 
         if ($event->getReplyEventUsers()->contains($replyEventUser)) {
-            $this->addFlash('warning','Tu es déjà inscrit(e) à cette séance');
-            return $this->redirectToRoute('event_list');
+            if ($replyEventUser->getReplyType() === $replyEventUser::OK) {
+                $this->addFlash('warning','Tu es déjà inscrit(e) à cette séance');
+                return $this->redirectToRoute('event_list');
+            }
+            if($replyEventUser->getReplyType() === $replyEventUser::INTERESTED) {
+                $replyEventUser->setReplyType($replyEventUser::OK);
+
+                $em->flush();
+
+                $emailService->sendNotificationNewParticipant($event, $event->getUser());
+                $this->addFlash('success','Ton inscription à cette séance a bien été enregistrée');
+                return $this->redirectToRoute('user_participate_list');        
+            }
         }
 
         $reply = new ReplyEventUser;
