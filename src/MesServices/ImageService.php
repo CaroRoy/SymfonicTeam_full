@@ -18,7 +18,7 @@ class ImageService {
         }
     }
 
-    public function edit(object $image = null, object $entity,string $imageOriginal) {
+    public function edit(object $image = null, object $entity,string $imageOriginal = null) {
         if($image !== null) {
             $this->handleMoveImage($image, $entity);
 
@@ -27,7 +27,7 @@ class ImageService {
         }
     }
 
-    public function deleteImage(string $imageUrl) {
+    public function deleteImage(string $imageUrl = null) {
         //Processus de supression de l'image précédente
         if($imageUrl !== null && $imageUrl !== User::IMAGE_DEFAUT_PATH) {
             $fileImageOriginal = $this->containerBag->get('app_images_directory') . '/..' . $imageUrl;

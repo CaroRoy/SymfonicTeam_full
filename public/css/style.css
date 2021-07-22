@@ -30,6 +30,10 @@ body {
   margin: 20px auto;
 }
 
+.flash.home {
+  margin: 0 auto;
+}
+
 .pagination .page-item.active .page-link {
   background-color: rgb(74, 0, 170);
   border: rgb(74, 0, 170) 1px solid;
