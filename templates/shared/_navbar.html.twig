@@ -42,7 +42,7 @@
                   Bonjour {{app.user.firstName}}
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">Mon compte</a></li>
+                  <li><a class="dropdown-item" href="{{path('update_account')}}">Mon compte</a></li>
                   <li><a class="dropdown-item" href="{{path('user_event_list')}}">Séances que je propose</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="{{path('user_participate_list')}}">Séances auxquelles je participe</a></li>

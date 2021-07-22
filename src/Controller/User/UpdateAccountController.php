@@ -3,15 +3,16 @@
 namespace App\Controller\User;
 
 use App\Entity\User;
-use App\Form\RegistrationFormType;
 use App\MesServices\EmailService;
 use App\MesServices\ImageService;
+use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
+use App\Form\UpdateAccountFormType;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UpdateAccountController extends AbstractController {
@@ -22,18 +23,10 @@ class UpdateAccountController extends AbstractController {
     {
         $user = $this->getUser();
 
-        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form = $this->createForm(UpdateAccountFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
-            $user->setPassword(
-                $passwordEncoder->encodePassword(
-                    $user,
-                    $form->get('plainPassword')->getData()
-                )
-            );
-
             /** @var User $user */
             $user = $form->getData();
             $image = $form->get('avatar')->getData();

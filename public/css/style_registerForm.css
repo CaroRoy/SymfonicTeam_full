@@ -94,6 +94,10 @@ form .btn-primary {
   width: 150px;
 }
 
+form .update {
+  width: 250px;
+}
+
 /*-----------------------------------------------MOBILE RESPONSIVE------------------------------------------------*/
 
 @media screen and (max-width: 768px) {

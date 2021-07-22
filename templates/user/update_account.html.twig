@@ -9,15 +9,8 @@
         <h1>Tes informations personnelles</h1>
 
         {{ form_start(form) }}
-            {# {{ form_row(registrationForm.email) }}
-            {{ form_row(registrationForm.plainPassword, {
-                label: 'Password'
-            }) }}
-            {{ form_row(registrationForm.agreeTerms) }} #}
-
             {{ form_widget(form) }}
-
-            <button type="submit" class="btn btn-primary">Enregistrer</button>
+            <button type="submit" class="btn btn-primary update">Enregistrer les modifications</button>
         {{ form_end(form) }}
 
     </main>
