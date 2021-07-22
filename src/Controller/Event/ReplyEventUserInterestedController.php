@@ -48,7 +48,7 @@ class ReplyEventUserInterestedController extends AbstractController {
         $em->persist($reply);
         $em->flush();
 
-        $this->addFlash('success','Cette séance a bien été enregistrée dans ta section "Les séances qui m\'intéressent');
+        $this->addFlash('success','Cette séance a bien été enregistrée dans ta section "Les séances qui m\'intéressent"');
         return $this->redirectToRoute('event_list');
 
         return $this->render('event_list.html.twig',['id' => $id]);
