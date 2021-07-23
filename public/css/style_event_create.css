@@ -43,10 +43,10 @@ form div {
   width: 100px;
 }
 
-/* #event_typeOfMusic,
+#event_typeOfMusic,
 #event_instrument {
   height: 200px;
-} */
+}
 
 form ul {
   list-style: url("/assets/music-player.svg");
