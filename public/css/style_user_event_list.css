@@ -44,6 +44,18 @@ article {
 article i {
   opacity: 0.85;
 }
+
+/*---------------------------------------COMMENTAIRES----------------------------------------------------*/
+
+.comments {
+  background-color: rgba(74, 0, 170, 0.1);
+  padding: 20px;
+}
+
+.new-message .card-header {
+  background-color: white;
+}
+
 /*-------------------------------------------MOBILE RESPONSIVE--------------------------------------------------*/
 
 @media screen and (max-width: 768px) {

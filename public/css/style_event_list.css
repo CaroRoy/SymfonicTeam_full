@@ -155,60 +155,15 @@ article i {
   border-color: #0eb40e transparent transparent transparent;
 }
 
-/*-------------------------------------------POP UP----------------------------------------------*/
+/*---------------------------------------COMMENTAIRES----------------------------------------------------*/
 
-#popup {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: auto;
-  right: 25px;
-  z-index: 1000;
-  box-shadow: 0 0 20px rgb(51, 51, 51);
-  height: 550px;
-}
-
-#popup .bg {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.card {
-  width: 400px;
-  height: 550px;
-  background-color: rgb(240, 237, 241);
+.comments {
+  background-color: rgba(74, 0, 170, 0.1);
+  padding: 20px;
 }
 
 .card-header {
-  background-color: rgb(74, 0, 170);
-  color: rgb(243, 243, 243);
-}
-
-.card-title {
-  font-family: "Sansita", sans-serif;
-}
-
-#pop-img {
-  height: 200px;
-  width: 200px;
-  object-fit: contain;
-  border-radius: 10px;
-}
-
-#popup p span {
-  font-weight: 600;
-}
-
-#popup .texteBouton {
-  outline: none;
-  border: none;
-  color: rgba(255, 255, 255, 0.8);
-  background-color: transparent;
-}
-
-#popup .texteBouton:hover {
-  color: rgba(255, 255, 255, 1);
+  background-color: white;
 }
 
 /*-------------------------------------------MOBILE RESPONSIVE--------------------------------------------------*/

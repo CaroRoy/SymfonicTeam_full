@@ -3,22 +3,19 @@
 namespace App\Controller\User;
 
 use App\Entity\User;
-use App\MesServices\EmailService;
 use App\MesServices\ImageService;
-use App\Repository\UserRepository;
 use App\Form\UpdateAccountFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UpdateAccountController extends AbstractController {
     /**
      * @Route("/mon-compte", name="update_account")
      */
-    public function update(Request $request, UserPasswordEncoderInterface $passwordEncoder, ImageService $imageService, EmailService $emailService, EntityManagerInterface $em): Response
+    public function update(Request $request, ImageService $imageService, EntityManagerInterface $em): Response
     {
         $user = $this->getUser();
 

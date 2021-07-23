@@ -34,6 +34,7 @@ class RegistrationController extends AbstractController
 
             /** @var User $user */
             $user = $form->getData();
+
             $image = $form->get('avatar')->getData();
             $imageService->save($image,$user);
 

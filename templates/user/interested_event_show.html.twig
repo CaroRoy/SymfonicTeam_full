@@ -93,6 +93,29 @@
                   <h6>Aucun participant pour le moment</h6>
               {% endif %}
           </div>
+          
+          <hr>
+
+          <div class="comments">
+              <h5 class="m-0 mb-2 p-0">Conversation à propos de cette séance :</h5>
+              {% if allComments | length > 0 %}
+                  {{knp_pagination_render(comments)}}
+                  <ul>
+                      {% for c in comments %}
+                          <li class="col-12 mt-3">
+                              <div class="card">
+                                  <div class="card-body">
+                                      <h6 class="card-title">message écrit par {{c.user.firstName}}, le {{c.createdAt | date('d/m/Y')}} à {{c.createdAt | date('H:i:s')}}</h6>
+                                      <p class="card-text">{{c.message}}</p>
+                                  </div>
+                              </div>
+                          </li>
+                      {% endfor %}
+                  </ul>
+              {% else %}
+                  <h6>Aucun message pour le moment</h6>
+              {% endif %}
+          </div>
 
           <hr>
 
