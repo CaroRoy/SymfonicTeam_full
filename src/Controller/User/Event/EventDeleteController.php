@@ -2,13 +2,14 @@
 
 namespace App\Controller\User\Event;
 
-use App\MesServices\EmailService;
+use App\Entity\ReplyEventUser;
+use App\MyServices\EmailService;
 use App\Repository\EventRepository;
-use App\Repository\ReplyEventUserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\ReplyEventUserRepository;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class EventDeleteController extends AbstractController {
     /**
@@ -17,8 +18,9 @@ class EventDeleteController extends AbstractController {
     public function delete(int $id, EventRepository $eventRepository,ReplyEventUserRepository $replyEventUserRepository, EntityManagerInterface $em, EmailService $emailService) : RedirectResponse {
         $event = $eventRepository->find($id);
         $user = $this->getUser();
-        $replys = $replyEventUserRepository->findBy(['event' => $event]);
+        $replys = $replyEventUserRepository->findBy(['event' => $event, 'replyType' => ReplyEventUser::OK]);
 
+        // On récupère tous les participants inscrits
         $participants = [];
         foreach ($replys as $r) {
             $participants[] = $r->getUser();

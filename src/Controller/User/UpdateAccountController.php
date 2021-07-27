@@ -3,7 +3,7 @@
 namespace App\Controller\User;
 
 use App\Entity\User;
-use App\MesServices\ImageService;
+use App\MyServices\ImageService;
 use App\Form\UpdateAccountFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,7 +29,6 @@ class UpdateAccountController extends AbstractController {
             $imageService->edit($image ,$user, $user->getAvatar());
 
             $em->flush();
-            // do anything else you need here, like send an email
 
             $this->addFlash('success','Ton compte a bien été modifié');
             return $this->redirectToRoute('home');

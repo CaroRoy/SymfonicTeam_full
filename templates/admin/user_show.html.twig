@@ -35,7 +35,11 @@
                 </div>
                 <div class="card-body">
                     <p>Nombre de séances publiées : {{events | length}}</p>
-                    <p>Nombre d'inscriptions à des séances : {{replys | length}}</p>
+                    <p class="mb-0">Nombre d'inscriptions à des séances : {{replys | length}}</p>
+                    <ul>
+                        <li>&#8594 Nombre de séances auxquelles cet utilisateur participe : {{participations | length}}</li>
+                        <li>&#8594 Nombre de séances qui l'intéressent : {{favoris | length}}</li>
+                    </ul>
                 </div>
             </div>
 
@@ -52,7 +56,7 @@
                             <td>Administrateur</td>
                         {% endif %}
                     </p>
-                    <p><em>Attention : Un utilisateur ne peut avoir qu'un seul rôle</em></p>
+                    <p><em>Information : Un utilisateur ne peut avoir qu'un seul rôle</em></p>
                     {% if user.roles[0] is same as "ROLE_USER" %}
                         <a class="btn btn-sm btn-primary" href="{{ path('admin_set_role',{'id' : user.id }) }}">Attribuer le rôle ADMIN</a>
                     {% endif %}

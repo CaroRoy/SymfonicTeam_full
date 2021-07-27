@@ -1,6 +1,6 @@
 <?php 
 
-namespace App\MesServices;
+namespace App\MyServices;
 
 use App\Entity\User;
 use App\Entity\Event;

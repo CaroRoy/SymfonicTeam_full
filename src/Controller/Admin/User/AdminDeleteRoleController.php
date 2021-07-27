@@ -2,7 +2,7 @@
 
 namespace App\Controller\Admin\User;
 
-use App\MesServices\EmailService;
+use App\MyServices\EmailService;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Routing\Annotation\Route;

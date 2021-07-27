@@ -3,7 +3,7 @@
 namespace App\Controller\Event;
 
 use App\Entity\ReplyEventUser;
-use App\MesServices\EmailService;
+use App\MyServices\EmailService;
 use App\Repository\EventRepository;
 use App\Repository\ReplyEventUserRepository;
 use Doctrine\ORM\EntityManagerInterface;

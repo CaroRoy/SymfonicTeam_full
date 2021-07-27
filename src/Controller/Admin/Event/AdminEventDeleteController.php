@@ -2,13 +2,14 @@
 
 namespace App\Controller\Admin\Event;
 
-use App\MesServices\EmailService;
+use App\Entity\ReplyEventUser;
+use App\MyServices\EmailService;
 use App\Repository\EventRepository;
-use App\Repository\ReplyEventUserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\ReplyEventUserRepository;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AdminEventDeleteController extends AbstractController {
     /**
@@ -17,8 +18,9 @@ class AdminEventDeleteController extends AbstractController {
     public function delete(int $id, EventRepository $eventRepository,ReplyEventUserRepository $replyEventUserRepository ,EntityManagerInterface $em, EmailService $emailService) : RedirectResponse {
         $event = $eventRepository->find($id);
         $user = $event->getUser();
-        $replys = $replyEventUserRepository->findBy(['event' => $event]);
+        $replys = $replyEventUserRepository->findBy(['event' => $event, 'replyType' => ReplyEventUser::OK]);
 
+        // On récupère tous les participants inscrits
         $participants = [];
         foreach ($replys as $r) {
             $participants[] = $r->getUser();
@@ -29,11 +31,6 @@ class AdminEventDeleteController extends AbstractController {
             return $this->redirectToRoute('admin_event_list');
         }
         
-        if($this->getUser()->getRoles()[0] !== 'ROLE_ADMIN') {
-            $this->addFlash('danger','Tu n\'es pas autorisé à supprimer cette séance');
-            return $this->redirectToRoute('admin_event_list');
-        }
-
         $em->remove($event);
         $em->flush();
 
