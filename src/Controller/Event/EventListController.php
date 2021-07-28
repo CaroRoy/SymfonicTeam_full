@@ -16,6 +16,12 @@ class EventListController extends AbstractController {
      * @Route("/seances", name="event_list")
      */
     public function list(EventRepository $eventRepository, PaginatorInterface $paginatorInterface, Request $request): Response {
+        $user = $this->getUser();
+        if (!$user) {
+            $this->addFlash('danger','merci de te connecter pour accéder aux séances publiées');
+            return $this->redirectToRoute('home');
+        }
+        
         $data = new SearchData();
         $data->page = $request->get('page', 1);
         $form = $this->createForm(SearchFormType::class, $data);
