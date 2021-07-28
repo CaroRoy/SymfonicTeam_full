@@ -6,14 +6,10 @@ use App\Data\SearchData;
 use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 class SearchFormType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
@@ -87,14 +83,14 @@ class SearchFormType extends AbstractType {
         $resolver->setDefaults([
             // on utilise la class SearchData pour représenter les données du formulaire
             'data_class' => SearchData::class,
-            // on envoie les paramètres de recherche dans l'URL avec la méthode GET
+            // on utilise la méthode GET pour transmettre les paramètres de recherche dans l'URL
             'method' => 'GET',
             // on désactive les protection CSRF car on est dans un simple formulaire de recherche
             'csrf_protection' => false
         ]);
     }
 
-    // on retire les préfixes pour que les paramètres de recherche s'affichent directement dans l'URL sans format particulier
+    // on retire les préfixes pour que les paramètres de recherche s'affichent directement dans l'URL sans leur titre
     public function getBlockPrefix()
     {
         return '';

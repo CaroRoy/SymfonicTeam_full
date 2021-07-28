@@ -33,12 +33,12 @@
 
   <main>
     <section>
-      {% if all | length < 1 %}
+      {% if all < 1 %}
         <h2>Aucun résultat</h2>
-      {% elseif all | length == 1 %}
-        <h2>{{all | length}} séance a été proposée. Fais ton choix !</h2>
+      {% elseif all == 1 %}
+        <h2>{{all}} séance a été proposée. Fais ton choix !</h2>
       {% else %}
-        <h2>{{all | length}} séances ont été proposées. Fais ton choix !</h2>
+        <h2>{{all}} séances ont été proposées. Fais ton choix !</h2>
       {% endif %}
 
       <div class="pagination">

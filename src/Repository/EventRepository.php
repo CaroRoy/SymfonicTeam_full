@@ -4,11 +4,12 @@ namespace App\Repository;
 
 use App\Entity\Event;
 use App\Data\SearchData;
+use Doctrine\ORM\Mapping\OrderBy;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\PaginatorInterface;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\Mapping\OrderBy;
-use Knp\Component\Pager\PaginatorInterface;
+use Doctrine\ORM\Query;
 
 /**
  * @method Event|null find($id, $lockMode = null, $lockVersion = null)
@@ -57,7 +58,7 @@ class EventRepository extends ServiceEntityRepository
 
     /**
      * on récupère les Events par une recherche
-     * @return PaginationInterface
+     * @return  PaginationInterface
      */
     public function findSearch(SearchData $searchData) : PaginationInterface {
         $query = $this
@@ -115,11 +116,7 @@ class EventRepository extends ServiceEntityRepository
         }
 
         $query = $query->getQuery();
-        // dd($query);
-        return $this->paginator->paginate(
-            $query,
-            $searchData->page,
-            5
-        );
+        // on retourne les résultats dans une pagination avec le numéro de la page appelé via SearchData(par défaut 1), et on met 5 résultats par page
+        return $this->paginator->paginate($query, $searchData->page, 5);
     }
 }

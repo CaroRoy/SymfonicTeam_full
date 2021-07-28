@@ -16,13 +16,13 @@ class EventListController extends AbstractController {
      * @Route("/seances", name="event_list")
      */
     public function list(EventRepository $eventRepository, PaginatorInterface $paginatorInterface, Request $request): Response {
-        $all = $eventRepository->findAll();
         $data = new SearchData();
         $data->page = $request->get('page', 1);
         $form = $this->createForm(SearchFormType::class, $data);
         $form->handleRequest($request);
 
         $events = $eventRepository->findSearch($data);
+        $all = $events->getTotalItemCount();
         // on part à la page 1 par défaut, sinon le numéro de la page appelée, et on présente 5 events par page
         // $events = $paginatorInterface->paginate($all, $request->query->getInt('page', 1), 5);
 
