@@ -2,12 +2,14 @@
 
 namespace App\Controller\Event;
 
+use App\Data\SearchData;
+use App\Form\SearchFormType;
 use App\Repository\EventRepository;
 use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 
 class EventListController extends AbstractController {
     /**
@@ -15,9 +17,19 @@ class EventListController extends AbstractController {
      */
     public function list(EventRepository $eventRepository, PaginatorInterface $paginatorInterface, Request $request): Response {
         $all = $eventRepository->findAll();
-        // on part à la page 1 par défaut, sinon le numéro de la page appelée, et on présente 5 events par page
-        $events = $paginatorInterface->paginate($all, $request->query->getInt('page', 1), 5);
+        $data = new SearchData();
+        $data->page = $request->get('page', 1);
+        $form = $this->createForm(SearchFormType::class, $data);
+        $form->handleRequest($request);
 
-        return $this->render("event/event_list.html.twig",['all' => $all, 'events' => $events]);
+        $events = $eventRepository->findSearch($data);
+        // on part à la page 1 par défaut, sinon le numéro de la page appelée, et on présente 5 events par page
+        // $events = $paginatorInterface->paginate($all, $request->query->getInt('page', 1), 5);
+
+        return $this->render("event/event_list.html.twig",[
+            'all' => $all,
+            'events' => $events,
+            'form' => $form->createView()
+        ]);
     }
 }

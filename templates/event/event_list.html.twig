@@ -9,84 +9,119 @@
       {% include "shared/_messages_flash.html.twig" %}
   </div>
 
-    <main>
-      <section>
+  <div class="recherche">
+    {{form_start(form)}}
+      <div class="simple">
+        {{form_row(form.q)}}
+      </div>
+      <div class="simple">
+        {{form_row(form.postalCode)}}
+      </div>
+      <div class="double">
+        {{form_row(form.instrument)}}
+        {{form_row(form.typeOfMusic)}}
+      </div>
+      <div class="double" id="double-date">
+        <p>date du </p>
+        {{form_row(form.dateMin)}}
+        <p>au </p>
+        {{form_row(form.dateMax)}}
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Rechercher</button>
+    {{form_end(form)}}
+  </div>
+
+  <main>
+    <section>
+      {% if all | length < 1 %}
+        <h2>Aucun résultat</h2>
+      {% elseif all | length == 1 %}
+        <h2>{{all | length}} séance a été proposée. Fais ton choix !</h2>
+      {% else %}
         <h2>{{all | length}} séances ont été proposées. Fais ton choix !</h2>
+      {% endif %}
 
+      <div class="pagination">
         {{knp_pagination_render(events)}}
+        <div class="sortable">
+        tri :
+          <button class="btn btn-outline-primary">{{knp_pagination_sortable(events, 'date', 'e.meetingDatetime')}}</button>
+          <button class="btn btn-outline-primary">{{knp_pagination_sortable(events, 'département', 'e.meetingPostalCode')}}</button>
+        </div>
+      </div>
 
-        {% for e in events %}
-        <article>
-          <div class="top">
-            <div class="gauche">
-              <h3>{{e.title}}</h3>
-              <div>
-                <h6 class="m-0 me-2 p-0">Date :</h6>
-                <p class="m-0 p-0">le {{e.meetingDatetime | date('d/m/Y')}} à {{e.meetingDatetime | date('H:i')}}</p>
-              </div>
-              <div>
-                <h6 class="m-0 me-2 p-0">Lieu :</h6>
-                <p class="m-0 p-0">{{e.meetingPlace}}, {{e.meetingPostalCode}}, {{e.meetingCity}}</p>
-              </div>
-            </div>
-            <div class="droite">
-              <h6 class="me-1">Publié par :</h6>
-
-              <div>
-                <p class="mb-0 pseudo">{{e.user.firstName}}</p>
-                <img
-                  class="button avatar"
-                  {% if e.user.avatar is not same as null %}
-                    src="{{e.user.avatar}}"
-                  {% else %}
-                    src="{{asset('images/default-avatar.jpg')}}"
-                  {% endif %}
-                  alt="photo"
-                />
-              </div>
-            </div>
-          </div>
-
-          <div class="bas">
+      {% for e in events %}
+      <article>
+        <div class="top">
+          <div class="gauche">
+            <h3>{{e.title}}</h3>
             <div>
-                <h6 class="m-0 me-2 p-0">Instrument(s) :</h6>
-                <p class="m-0 p-0">
-                    {% for i in e.instrument %}
-                        {{i}}  
-                    {% endfor %}               
-                </p>
+              <h6 class="m-0 me-2 p-0">Date :</h6>
+              <p class="m-0 p-0">le {{e.meetingDatetime | date('d/m/Y')}} à {{e.meetingDatetime | date('H:i')}}</p>
             </div>
             <div>
-                <h6 class="m-0 me-2 p-0">Style(s) de musique :</h6>
-                <p class="m-0 p-0">
-                    {% for type in e.typeOfMusic %}
-                      {{type}}  
-                    {% endfor %}
-                </p>
+              <h6 class="m-0 me-2 p-0">Lieu :</h6>
+              <p class="m-0 p-0">{{e.meetingPlace}}, {{e.meetingPostalCode}}, {{e.meetingCity}}</p>
             </div>
+          </div>
+          <div class="droite">
+            <h6 class="me-1">Publié par :</h6>
+
             <div>
-              <h6 class="m-0 me-2 p-0">Infos supplémentaires :</h6>
-              <p class="m-0 p-0">{{e.content}}</p>
+              <p class="mb-0 pseudo">{{e.user.firstName}}</p>
+              <img
+                class="button avatar"
+                {% if e.user.avatar is not same as null %}
+                  src="{{e.user.avatar}}"
+                {% else %}
+                  src="{{asset('images/default-avatar.jpg')}}"
+                {% endif %}
+                alt="photo"
+              />
             </div>
+          </div>
+        </div>
 
+        <div class="bas">
+          <div>
+              <h6 class="m-0 me-2 p-0">Instrument(s) :</h6>
+              <p class="m-0 p-0">
+                  {% for i in e.instrument %}
+                      {{i}}  
+                  {% endfor %}               
+              </p>
+          </div>
+          <div>
+              <h6 class="m-0 me-2 p-0">Style(s) de musique :</h6>
+              <p class="m-0 p-0">
+                  {% for type in e.typeOfMusic %}
+                    {{type}}  
+                  {% endfor %}
+              </p>
+          </div>
+          <div>
+            <h6 class="m-0 me-2 p-0">Infos supplémentaires :</h6>
+            <p class="m-0 p-0">{{e.content}}</p>
           </div>
 
-          <div class="boutons">
-            <a href="{{path('event_reply_participate', {'id':e.id})}}" class="btn btn-primary">
-              <i class="fas fa-check"></i> J'y vais !
-            </a>
-            <a href="{{path('event_reply_interested', {'id':e.id})}}" class="btn btn-warning">
-              <i class="fas fa-star"></i> Ça m'intéresse
-            </a>
-          </div>
-        </article>
+        </div>
 
-        {% endfor %}
+        <div class="boutons">
+          <a href="{{path('event_reply_participate', {'id':e.id})}}" class="btn btn-primary">
+            <i class="fas fa-check"></i> J'y vais !
+          </a>
+          <a href="{{path('event_reply_interested', {'id':e.id})}}" class="btn btn-warning">
+            <i class="fas fa-star"></i> Ça m'intéresse
+          </a>
+        </div>
+      </article>
 
-        {{knp_pagination_render(events)}}
-        
-      </section>
-    </main>
+      {% endfor %}
+
+      {{knp_pagination_render(events)}}
+      
+    </section>
+  </main>
 
 {% endblock %}
 

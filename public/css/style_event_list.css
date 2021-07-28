@@ -1,8 +1,9 @@
 /*-------------------------------------------RECHERCHE--------------------------------------------------*/
 
 .recherche {
-  height: 200px;
+  width: 100vw;
   background-color: rgb(74, 0, 170);
+  padding: 20px;
 }
 
 form .btn-primary {
@@ -10,7 +11,6 @@ form .btn-primary {
   border: rgb(139, 91, 201) 1px solid;
   background-color: rgb(111, 27, 221);
   color: rgb(243, 243, 243);
-  margin-right: 10px;
 }
 
 form .btn-primary:hover {
@@ -20,28 +20,52 @@ form .btn-primary:hover {
 }
 
 .recherche form {
-  height: 200px;
   width: 80%;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  color: rgb(92, 92, 92);
 }
 
-.recherche form div {
+.recherche .simple {
+  margin-bottom: 10px;
+}
+
+.recherche .double {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 10px;
 }
 
-input {
-  height: 50px;
-  width: 50%;
+.double .form-group {
+  width: 49%;
+}
+
+.form-group input,
+.form-group select {
   border: 0;
   border-radius: 5px;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  padding: 10px;
   background-color: white;
+}
+
+#double-date {
+  border-radius: 5px;
+  background-color: white;
+  margin-bottom: 10px;
+}
+
+#double-date p {
+  width: 15%;
+  padding-left: 10px;
+  padding-top: 5px;
+  margin: 0;
+}
+
+#double-date .form-group {
+  width: 35%;
+  padding-right: 20px;
+}
+
+.form-control {
+  color: rgb(92, 92, 92);
 }
 
 input:focus {
@@ -63,6 +87,15 @@ section {
 
 section h2 {
   margin: 20px 0 20px 10px;
+}
+
+.pagination {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.sortable {
+  margin-left: auto;
 }
 
 section article {
@@ -169,24 +202,25 @@ article i {
 /*-------------------------------------------MOBILE RESPONSIVE--------------------------------------------------*/
 
 @media screen and (max-width: 768px) {
-  .recherche {
-    height: 230px;
+  select option {
+    font-size: 0.7em;
   }
 
-  .recherche form {
-    height: 100%;
-    align-items: center;
+  #double-date p {
+    width: 25%;
+    padding-left: 10px;
+    padding-top: 5px;
+    margin: 0;
   }
 
-  form div {
-    width: 100%;
+  #double-date .form-group {
+    width: 25%;
+    padding-right: 5px;
+  }
+
+  .pagination {
     flex-direction: column;
-  }
-
-  .recherche input {
-    width: 100%;
-    height: 30px;
-    margin-right: 0;
+    margin-bottom: 10px;
   }
 
   section article {
