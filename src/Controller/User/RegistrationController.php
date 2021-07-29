@@ -62,6 +62,10 @@ class RegistrationController extends AbstractController
             return $this->redirectToRoute('home');
         }
 
+        if ($form->isSubmitted() && !($form->isValid())) {
+            $this->addFlash('warning', 'Erreur, merci de vérifier les champs du formulaire');
+        }
+
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);

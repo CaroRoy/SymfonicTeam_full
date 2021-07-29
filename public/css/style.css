@@ -154,13 +154,21 @@ footer p {
 }
 
 footer div {
-  width: 70%;
+  width: 65%;
   margin-right: 10%;
 }
 
 footer a:hover {
   font-style: italic;
   color: inherit;
+}
+
+footer li:last-child {
+  font-size: 0.8em;
+}
+
+footer li:last-child span {
+  color: #f1d57f;
 }
 
 /* ------------------------------------------MOBILE RESPONSIVE---------------------------------------------- */

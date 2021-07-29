@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AdminEventDeleteController extends AbstractController {
     /**
-     * @Route("/admin/supprimer/seance-{id}", name="admin_event_delete")
+     * @Route("admin/supprimer/seance-{id}", name="admin_event_delete")
      */
     public function delete(int $id, EventRepository $eventRepository,ReplyEventUserRepository $replyEventUserRepository ,EntityManagerInterface $em, EmailService $emailService) : RedirectResponse {
         $event = $eventRepository->find($id);

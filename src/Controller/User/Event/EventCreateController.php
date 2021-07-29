@@ -16,6 +16,11 @@ class EventCreateController extends AbstractController {
      */
     public function create(Request $request, EntityManagerInterface $em, UserRepository $userRepository) : Response {
         $user = $this->getUser();
+
+        if (!$user) {
+            $this->addFlash('danger','Tu dois te connecter pour pouvoir proposer une séance');
+            return $this->redirectToRoute('app_login');
+        }
         
         $form = $this->createForm(EventType::class);
         $form->handleRequest($request);
@@ -29,6 +34,10 @@ class EventCreateController extends AbstractController {
             $this->addFlash('success','La séance a bien été publiée');
 
             return $this->redirectToRoute('user_event_list');
+        }
+
+        if ($form->isSubmitted() && !($form->isValid())) {
+            $this->addFlash('warning', 'Erreur, merci de vérifier les champs du formulaire');
         }
 
         return $this->render('event/create.html.twig',['form' => $form->createView()]);

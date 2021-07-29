@@ -15,6 +15,12 @@ class UpdatePasswordController extends AbstractController {
      */
     public function resetPassword(Request $request, EntityManagerInterface $em, UserPasswordEncoderInterface $passwordEncoder) {
         $user = $this->getUser();
+
+        if (!$user) {
+            $this->addFlash('danger','Tu dois te connecter pour pouvoir modifier ton mot de passe');
+            return $this->redirectToRoute('app_login');
+        }
+
         $form = $this->createForm(UpdatePasswordFormType::class, $user);
         $form->handleRequest($request);
 

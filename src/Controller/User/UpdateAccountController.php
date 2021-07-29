@@ -19,6 +19,11 @@ class UpdateAccountController extends AbstractController {
     {
         $user = $this->getUser();
 
+        if (!$user) {
+            $this->addFlash('danger','Tu dois te connecter pour accéder à ton compte');
+            return $this->redirectToRoute('app_login');
+        }
+
         $form = $this->createForm(UpdateAccountFormType::class, $user);
         $form->handleRequest($request);
 

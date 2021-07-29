@@ -28,6 +28,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\Email(message = "Vous devez insérez un email valide.")
      */
     private $email;
 
@@ -64,6 +65,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Positive(message="Le code postal doit être un nombre positif à 5 chiffres")
+     * @Assert\Length(
+     *  min = 5, minMessage="Le code postal doit contenir 5 chiffres",
+     *  max = 5, maxMessage="Le code postal doit contenir 5 chiffres"
+     * )
+     * 
      */
     private $postalCode;
 

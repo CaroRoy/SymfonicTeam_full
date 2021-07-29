@@ -17,9 +17,10 @@ class EventListController extends AbstractController {
      */
     public function list(EventRepository $eventRepository, PaginatorInterface $paginatorInterface, Request $request): Response {
         $user = $this->getUser();
+        
         if (!$user) {
-            $this->addFlash('danger','merci de te connecter pour accéder aux séances publiées');
-            return $this->redirectToRoute('home');
+            $this->addFlash('danger','Tu dois te connecter pour accéder aux séances publiées');
+            return $this->redirectToRoute('app_login');
         }
         
         $data = new SearchData();
