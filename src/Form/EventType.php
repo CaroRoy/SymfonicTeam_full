@@ -36,7 +36,7 @@ class EventType extends AbstractType
                     'variété française' => 'variété française',
                     'autres' => 'autres'
                 ],
-                'empty_data' => 'tous',
+                'empty_data' => ['tous'],
                 'multiple' => true
             ])
             ->add('instrument', ChoiceType::class, [
@@ -60,9 +60,8 @@ class EventType extends AbstractType
                     'trompette' => 'trompette',
                     'cornemuse' => 'cornemuse'
                 ],
-                'empty_data' => 'tous',
+                'empty_data' => ['tous'],
                 'multiple' => true
-                // 'expanded' => true
             ])
             ->add('content', TextareaType::class, ['label' => 'Donne un peu plus de détails ici (comme par exemple la durée de la séance, les morceaux que tu proposes de jouer, ...) :'])
         ;
