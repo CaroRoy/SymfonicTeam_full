@@ -26,6 +26,10 @@ form {
   padding: 40px;
 }
 
+.form-error-icon {
+  color: red;
+}
+
 form div {
   margin-bottom: 10px;
 }
@@ -67,9 +71,5 @@ form .btn-primary {
 
   .row label {
     padding-left: 0;
-  }
-
-  .checkbox {
-    font-size: 8px;
   }
 }

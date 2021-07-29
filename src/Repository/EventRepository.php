@@ -116,7 +116,7 @@ class EventRepository extends ServiceEntityRepository
         }
 
         $query = $query->getQuery();
-        // on retourne les résultats dans une pagination avec le numéro de la page appelé via SearchData(par défaut 1), et on met 5 résultats par page
+        // on retourne les résultats dans une pagination en partant de la page appelé via SearchData(par défaut 1), et on met 5 résultats par page
         return $this->paginator->paginate($query, $searchData->page, 5);
     }
 }

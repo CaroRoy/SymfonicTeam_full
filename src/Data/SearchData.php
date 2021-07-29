@@ -3,7 +3,6 @@
 namespace App\Data;
 
 use DateTimeInterface;
-use App\Entity\Category;
 
 class SearchData {
     /**

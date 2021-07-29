@@ -64,7 +64,7 @@ class EventType extends AbstractType
                 'multiple' => true
                 // 'expanded' => true
             ])
-            ->add('content', TextareaType::class, ['label' => 'Donne un peu plus de détails ici :'])
+            ->add('content', TextareaType::class, ['label' => 'Donne un peu plus de détails ici (comme par exemple la durée de la séance, les morceaux que tu proposes de jouer, ...) :'])
         ;
     }
 

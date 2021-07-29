@@ -6,6 +6,7 @@ use App\Repository\EventRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=EventRepository::class)
@@ -36,6 +37,11 @@ class Event
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Positive(message="Le code postal doit être un nombre positif à 5 chiffres")
+     * @Assert\Length(
+     *  min = 5, minMessage="Le code postal doit contenir 5 chiffres",
+     *  max = 5, maxMessage="Le code postal doit contenir 5 chiffres"
+     * )
      */
     private $meetingPostalCode;
 

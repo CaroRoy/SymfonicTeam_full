@@ -1,0 +1,21 @@
+<div class="recherche">
+{{form_start(form)}}
+    <div class="simple">
+    {{form_row(form.q)}}
+    </div>
+    <div class="simple">
+    {{form_row(form.postalCode)}}
+    </div>
+    <div class="double">
+    {{form_row(form.instrument)}}
+    {{form_row(form.typeOfMusic)}}
+    </div>
+    <div class="double" id="double-date">
+    <p>date du </p>
+    {{form_row(form.dateMin)}}
+    <p>au </p>
+    {{form_row(form.dateMax)}}
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Rechercher</button>
+{{form_end(form)}}
+</div>

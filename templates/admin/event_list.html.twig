@@ -8,68 +8,47 @@
     <div class="flash">
         {% include "shared/_messages_flash.html.twig" %}
     </div>
+
+    {% include "shared/_search_event_form.html.twig" with {'form' : form} %}
     
     <main>
       <section>
-        <a href="{{path('admin_home')}}" class="btn btn-light button-back">
+        <a href="{{path('admin_home')}}" class="btn btn-light button-back mt-3">
             <i class="fas fa-angle-double-left"></i> Retour
         </a>
 
-        {% if events | length > 0 %}
-            <h2>{{events | length}} séances créées :</h2>
-
-            {% for e in events %}
-                <article>
-                    <div class="top">
-                    <h3>{{e.title}}</h3>
-                    <div>
-                        <h6 class="m-0 me-2 p-0">Date :</h6>
-                        <p class="m-0 p-0">le {{e.meetingDatetime | date('d/m/Y')}} à {{e.meetingDatetime | date('H:i')}}</p>
-                    </div>
-                    <div>
-                        <h6 class="m-0 me-2 p-0">Lieu :</h6>
-                        <p class="m-0 p-0">
-                        {{e.meetingPlace}}, {{e.meetingPostalCode}}, {{e.meetingCity}}
-                        </p>
-                    </div>
-                    </div>
-
-                    <div class="bas">
-                        <div>
-                            <h6 class="m-0 me-2 p-0">Instrument(s) :</h6>
-                            <p class="m-0 p-0">
-                                {% for i in e.instrument %}
-                                    {{i}}  
-                                {% endfor %}               
-                            </p>
-                        </div>
-                        <div>
-                            <h6 class="m-0 me-2 p-0">Style(s) de musique :</h6>
-                            <p class="m-0 p-0">
-                                {% for type in e.typeOfMusic %}
-                                    {{type}}  
-                                {% endfor %}
-                            </p>
-                        </div>
-                        <div>
-                            <h6 class="m-0 me-2 p-0">Infos supplémentaires :</h6>
-                            <p class="m-0 p-0">{{e.content}}</p>
-                        </div>
-                    </div>
-
-                    <div class="boutons">
-                        <a href="{{path('admin_event_show', {'id' : e.id })}}" class="btn btn-primary">
-                            <i class="fas fa-info-circle"></i> Détails
-                        </a>
-                    </div>
-                </article>
-            {% endfor %}
-
+        {% if all < 1 %}
+            <h2>Aucun résultat</h2>
         {% else %}
-            <div class="no-event">
-                <h5>Aucune séance n'a encore été proposée</h5>
-            </div>
+            <h2>{{all}} séance(s) créée(s) :</h2>
         {% endif %}
+
+        <div class="pagination">
+            {{knp_pagination_render(events)}}
+            <div class="sortable">
+                tri :
+                <button class="btn btn-outline-primary">{{knp_pagination_sortable(events, 'date', 'e.meetingDatetime')}}</button>
+                <button class="btn btn-outline-primary">{{knp_pagination_sortable(events, 'département', 'e.meetingPostalCode')}}</button>
+            </div>
+        </div>
+
+        {% for e in events %}
+            <article>
+                {% include "shared/_event_description.html.twig" with {'event' : e} %}
+
+                <div class="boutons">
+                    <a href="{{path('admin_event_show', {'id' : e.id })}}" class="btn btn-primary">
+                        <i class="fas fa-info-circle"></i> Détails
+                    </a>
+                </div>
+            </article>
+        {% endfor %}
+
+        {{knp_pagination_render(events)}}
+
+        <a href="{{path('admin_home')}}" class="btn btn-light button-back mt-3">
+            <i class="fas fa-angle-double-left"></i> Retour
+        </a>
       </section>
     </main>
 {% endblock %}
