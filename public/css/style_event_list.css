@@ -80,7 +80,7 @@ main {
 /*---------------------------------------------SECTION ARTICLES------------------------------------------------------*/
 
 section {
-  width: 70%;
+  width: 80%;
   margin: 0 auto;
 }
 
@@ -255,7 +255,11 @@ article i {
     margin-top: 20px;
   }
 
-  .boutons button {
+  .participants ul {
+    flex-wrap: wrap;
+  }
+
+  .boutons .btn {
     width: 100%;
     margin-bottom: 10px;
   }

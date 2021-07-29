@@ -105,6 +105,14 @@ article i {
     margin-top: 20px;
   }
 
+  .participants ul {
+    flex-wrap: wrap;
+  }
+
+  .pagination li {
+    font-size: 0.8em;
+  }
+
   .boutons button {
     width: 100%;
     margin-bottom: 10px;
