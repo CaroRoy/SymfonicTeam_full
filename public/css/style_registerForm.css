@@ -26,67 +26,12 @@ form {
   padding: 40px;
 }
 
-h3 {
-  color: rgb(111, 27, 221);
-  margin-bottom: 20px;
-  font-size: 1.2em;
-}
-
 .form-error-icon {
   color: red;
 }
 
-.apart {
-  padding-top: 40px;
-  margin-top: 40px;
-  border-top: 2px solid rgba(133, 132, 134, 0.5);
-  display: flex;
-  flex-direction: column;
-}
-
 input {
   margin-bottom: 20px;
-}
-
-.genre {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-.radio {
-  display: flex;
-  align-items: center;
-  width: 30%;
-}
-
-.genre input {
-  margin: 0 8px 0 0;
-}
-
-.genre p {
-  width: 25%;
-  margin-bottom: 0;
-}
-
-.checkbox {
-  width: 100%;
-  display: flex;
-  margin-bottom: 20px;
-}
-
-.checkbox .colonne {
-  width: 50%;
-}
-
-.instru label,
-.instru #instrument,
-.instru #niveau {
-  width: 49%;
-}
-
-form .btn-outline-primary {
-  width: 30%;
-  margin: 30px 0;
 }
 
 form .btn-primary {
@@ -112,32 +57,5 @@ main a:hover {
 @media screen and (max-width: 768px) {
   main {
     width: 80%;
-  }
-  form .btn-outline-primary {
-    width: 100%;
-  }
-
-  .genre {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .radio,
-  .genre p {
-    width: 100%;
-  }
-
-  .checkbox {
-    font-size: 8px;
-  }
-
-  .instru label,
-  .instru #instrument,
-  .instru #niveau {
-    width: 100%;
-  }
-
-  form .btn-outline-primary {
-    font-size: 12px;
   }
 }

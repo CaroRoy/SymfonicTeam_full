@@ -52,11 +52,6 @@ form div {
   height: 200px;
 }
 
-form ul {
-  list-style: url("/assets/music-player.svg");
-  font-size: 0.9em;
-}
-
 form .btn-primary {
   margin: 20px auto 0;
   width: 150px;
@@ -65,6 +60,10 @@ form .btn-primary {
 /*----------------------------------------------MOBILE RESPONSIVE--------------------------------------------------*/
 
 @media screen and (max-width: 768px) {
+  main {
+    width: 90%;
+  }
+
   form {
     padding: 20px;
   }

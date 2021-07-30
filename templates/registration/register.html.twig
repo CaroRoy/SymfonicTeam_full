@@ -13,14 +13,7 @@
         <h1>Inscris-toi et rencontre d'autres musiciens près de chez toi !</h1>
 
         {{ form_start(registrationForm) }}
-            {# {{ form_row(registrationForm.email) }}
-            {{ form_row(registrationForm.plainPassword, {
-                label: 'Password'
-            }) }}
-            {{ form_row(registrationForm.agreeTerms) }} #}
-
             {{ form_widget(registrationForm) }}
-
             <button type="submit" class="btn btn-primary">Je m'inscris</button>
         {{ form_end(registrationForm) }}
 

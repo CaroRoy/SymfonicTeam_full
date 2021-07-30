@@ -1,7 +1,7 @@
 {% extends "base.html.twig" %}
 
 {% block stylesheets %}
-  <link rel="stylesheet" href="{{asset('css/style_user_event_list.css')}}">
+  <link rel="stylesheet" href="{{asset('css/style_event_list.css')}}">
 {% endblock %}
 
 {% block body %}
@@ -21,42 +21,7 @@
 
             {% for r in replys %}
                 <article>
-                    <div class="top">
-                    <h3>{{r.event.title}}</h3>
-                    <div>
-                        <h6 class="m-0 me-2 p-0">Date :</h6>
-                        <p class="m-0 p-0">le {{r.event.meetingDatetime | date('d/m/Y')}} à {{r.event.meetingDatetime | date('H:i')}}</p>
-                    </div>
-                    <div>
-                        <h6 class="m-0 me-2 p-0">Lieu :</h6>
-                        <p class="m-0 p-0">
-                        {{r.event.meetingPlace}}, {{r.event.meetingPostalCode}}, {{r.event.meetingCity}}
-                        </p>
-                    </div>
-                    </div>
-
-                    <div class="bas">
-                        <div>
-                            <h6 class="m-0 me-2 p-0">Instrument(s) :</h6>
-                            <p class="m-0 p-0">
-                                {% for i in r.event.instrument %}
-                                    {{i}}  
-                                {% endfor %}               
-                            </p>
-                        </div>
-                        <div>
-                            <h6 class="m-0 me-2 p-0">Style(s) de musique :</h6>
-                            <p class="m-0 p-0">
-                                {% for type in r.event.typeOfMusic %}
-                                    {{type}}  
-                                {% endfor %}
-                            </p>
-                        </div>
-                        <div>
-                            <h6 class="m-0 me-2 p-0">Infos supplémentaires :</h6>
-                            <p class="m-0 p-0">{{r.event.content}}</p>
-                        </div>
-                    </div>
+                    {% include "shared/_event_description.html.twig" with {'event': r.event} %}
 
                     <div class="boutons">
                         <a href="{{path('user_participate_show', {'id' : r.id })}}" class="btn btn-primary">
@@ -72,6 +37,11 @@
                 <a href="{{path('event_list')}}" class="btn btn-primary">Consulter les séances !</a>
             </div>
         {% endif %}
+
+        <a href="{{path('user_private_space')}}" class="btn btn-light button-back">
+          <i class="fas fa-angle-double-left"></i> Retour
+        </a>
+        
       </section>
     </main>
 {% endblock %}

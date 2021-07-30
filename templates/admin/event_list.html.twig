@@ -12,43 +12,45 @@
     {% include "shared/_search_event_form.html.twig" with {'form' : form} %}
     
     <main>
-      <section>
-        <a href="{{path('admin_home')}}" class="btn btn-light button-back mt-3">
-            <i class="fas fa-angle-double-left"></i> Retour
-        </a>
+        <section>
+        
+            <a href="{{path('admin_home')}}" class="btn btn-light button-back mt-3">
+                <i class="fas fa-angle-double-left"></i> Retour
+            </a>
 
-        {% if all < 1 %}
-            <h2>Aucun résultat</h2>
-        {% else %}
-            <h2>{{all}} séance(s) créée(s) :</h2>
-        {% endif %}
+            {% if all < 1 %}
+                <h2>Aucun résultat</h2>
+            {% else %}
+                <h2>{{all}} séance(s) créée(s) :</h2>
+            {% endif %}
 
-        <div class="pagination">
-            {{knp_pagination_render(events)}}
-            <div class="sortable">
-                tri :
-                <button class="btn btn-outline-primary">{{knp_pagination_sortable(events, 'date', 'e.meetingDatetime')}}</button>
-                <button class="btn btn-outline-primary">{{knp_pagination_sortable(events, 'département', 'e.meetingPostalCode')}}</button>
-            </div>
-        </div>
-
-        {% for e in events %}
-            <article>
-                {% include "shared/_event_description.html.twig" with {'event' : e} %}
-
-                <div class="boutons">
-                    <a href="{{path('admin_event_show', {'id' : e.id })}}" class="btn btn-primary">
-                        <i class="fas fa-info-circle"></i> Détails
-                    </a>
+            <div class="knp">
+                {{knp_pagination_render(events)}}
+                <div class="sortable">
+                    tri :
+                    <button class="btn btn-outline-primary">{{knp_pagination_sortable(events, 'date', 'e.meetingDatetime')}}</button>
+                    <button class="btn btn-outline-primary">{{knp_pagination_sortable(events, 'département', 'e.meetingPostalCode')}}</button>
                 </div>
-            </article>
-        {% endfor %}
+            </div>
 
-        {{knp_pagination_render(events)}}
+            {% for e in events %}
+                <article>
+                    {% include "shared/_event_description.html.twig" with {'event' : e} %}
 
-        <a href="{{path('admin_home')}}" class="btn btn-light button-back mt-3">
-            <i class="fas fa-angle-double-left"></i> Retour
-        </a>
-      </section>
+                    <div class="boutons">
+                        <a href="{{path('admin_event_show', {'id' : e.id })}}" class="btn btn-primary">
+                            <i class="fas fa-info-circle"></i> Détails
+                        </a>
+                    </div>
+                </article>
+            {% endfor %}
+
+            {{knp_pagination_render(events)}}
+
+            <a href="{{path('admin_home')}}" class="btn btn-light button-back mt-3">
+                <i class="fas fa-angle-double-left"></i> Retour
+            </a>
+
+        </section>
     </main>
 {% endblock %}

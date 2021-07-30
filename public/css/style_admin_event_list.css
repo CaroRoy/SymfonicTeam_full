@@ -88,7 +88,7 @@ section h2 {
   margin: 0 0 20px 10px;
 }
 
-.pagination {
+.knp {
   display: flex;
   margin-bottom: 10px;
 }
@@ -163,7 +163,7 @@ article i {
     padding-right: 5px;
   }
 
-  .pagination {
+  .knp {
     flex-direction: column;
     margin-bottom: 10px;
   }

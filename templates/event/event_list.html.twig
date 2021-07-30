@@ -21,7 +21,7 @@
         <h2>{{all}} séances ont été proposées. Fais ton choix !</h2>
       {% endif %}
 
-      <div class="pagination">
+      <div class="knp">
         {{knp_pagination_render(events)}}
         <div class="sortable">
           tri :
@@ -51,8 +51,4 @@
     </section>
   </main>
 
-{% endblock %}
-
-{% block javascripts %}
-  <script src="{{asset('js/script_event_list.js')}}"></script>
 {% endblock %}
