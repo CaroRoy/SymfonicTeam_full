@@ -28,13 +28,13 @@ class EmailService {
         $this->mailer->send($email);
     }
     
-    public function sendWelcome(User $user) {
+    public function sendResetPassword(User $user) {
         $email = (new TemplatedEmail())
             ->from('info@symfonic-team.fr')
             ->to($user->getEmail())
-            ->subject('Bienvenue sur Symfonic Team')
-            ->htmlTemplate('email/welcome.html.twig')
-            ->context(['user' => $user]);
+            ->subject('Réinitialisation du mot de passe')
+            ->htmlTemplate('email/reset_password.html.twig')
+            ->context(['user' => $user, 'token' => $user->getAuthenticationToken()]);
 
         $this->mailer->send($email);
     }

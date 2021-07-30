@@ -25,6 +25,10 @@ form {
   padding: 40px;
 }
 
+.form-error-icon {
+  color: red;
+}
+
 input {
   margin-bottom: 20px;
 }
@@ -36,6 +40,19 @@ form .btn-primary {
 
 form a:hover {
   color: rgb(243, 243, 243);
+}
+
+#inputPassword {
+  margin-bottom: 0;
+}
+
+.forgotten-pwd {
+  color: rgb(74, 0, 170);
+  text-decoration: underline;
+}
+
+.forgotten-pwd:hover {
+  color: rgb(111, 27, 221);
 }
 
 /*-----------------------------------------------MOBILE RESPONSIVE------------------------------------------------*/
