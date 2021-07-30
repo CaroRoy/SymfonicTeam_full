@@ -99,6 +99,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $comments;
 
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $authenticationToken;
+
     public function __construct()
     {
         $this->createdEvents = new ArrayCollection();
@@ -365,6 +370,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $comment->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAuthenticationToken(): ?string
+    {
+        return $this->authenticationToken;
+    }
+
+    public function setAuthenticationToken(?string $authenticationToken): self
+    {
+        $this->authenticationToken = $authenticationToken;
 
         return $this;
     }

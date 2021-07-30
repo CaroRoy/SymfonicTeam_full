@@ -16,6 +16,17 @@ class EmailService {
         $this->mailer = $mailer;
         $this->twig = $twig;
     }
+
+    public function validateRegistration(User $user) {
+        $email = (new TemplatedEmail())
+            ->from('info@symfonic-team.fr')
+            ->to($user->getEmail())
+            ->subject('Ton inscription sur Symfonic Team')
+            ->htmlTemplate('email/registration.html.twig')
+            ->context(['user' => $user, 'token' => $user->getAuthenticationToken()]);
+
+        $this->mailer->send($email);
+    }
     
     public function sendWelcome(User $user) {
         $email = (new TemplatedEmail())

@@ -7,15 +7,19 @@
 {% block body %}
         <div class="w-75 mx-auto">
             {% include "shared/_messages_flash.html.twig" %}
+            {% if error %}
+                <div class="alert alert-danger  alert-dismissible fade show">
+                    {{ error.messageKey|trans(error.messageData, 'security') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endif %}
         </div>
 
     <main>
         <h1>Connexion</h1>
 
         <form method="post">
-            {% if error %}
-                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-            {% endif %}
+            
 
             <label for="inputEmail">Email</label>
             <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>

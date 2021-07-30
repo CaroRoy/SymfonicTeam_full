@@ -42,21 +42,27 @@ class SearchFormType extends AbstractType {
                 'required' => false,
                 'placeholder' => 'instrument',
                 'choices' => [
-                    'guitare' => 'guitare',
-                    'banjo' => 'banjo',
-                    'ukulele' => 'ukulele',
-                    'basse' => 'basse',
-                    'harmonica' => 'harmonica',
-                    'violoncelle' => 'violoncelle',
-                    'violon' => 'violon',
-                    'flûte' => 'flûte',
                     'accordéon' => 'accordéon',
-                    'piano' => 'piano',
-                    'synthé' => 'synthé',
-                    'percussions' => 'percussions',
+                    'banjo' => 'banjo',
+                    'basse' => 'basse',
+                    'batterie' => 'batterie',
+                    'contrebasse' => 'contrebasse',
+                    'cornemuse' => 'cornemuse',
+                    'flûte' => 'flûte',
+                    'guitare' => 'guitare',
+                    'harmonica' => 'harmonica',
                     'jumbo' => 'jumbo',
+                    'percussions' => 'percussions',
+                    'piano' => 'piano',
+                    'saxophone' => 'saxophone',
+                    'synthé' => 'synthé',
+                    'trombonne' => 'trombonne',
                     'trompette' => 'trompette',
-                    'cornemuse' => 'cornemuse'
+                    'tubas' => 'tubas',
+                    'ukulele' => 'ukulele',
+                    'violon' => 'violon',
+                    'violoncelle' => 'violoncelle',
+                    'autres' => 'autres'
                 ]
             ])
             ->add('typeOfMusic', ChoiceType::class, [
@@ -64,14 +70,14 @@ class SearchFormType extends AbstractType {
                 'required' => false,
                 'placeholder' => 'style de musique',
                 'choices' => [
-                    'rock\'n\'roll' => 'rock\'n\'roll',
-                    'jazz' => 'jazz',
                     'blues' => 'blues',
-                    'pop/rock' => 'pop/rock',
                     'classique' => 'classique',
-                    'reggae' => 'reggae',
+                    'jazz' => 'jazz',
                     'metal' => 'metal',
-                    'variété française' => 'variété française',
+                    'pop/rock' => 'pop/rock',
+                    'reggae' => 'reggae',
+                    'rock\'n\'roll' => 'rock\'n\'roll',
+                    'variété française' => 'variété française',
                     'autres' => 'autres'
                 ]
             ])
