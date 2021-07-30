@@ -27,7 +27,9 @@ class UpdatePasswordController extends AbstractController {
         if ($form->isSubmitted() && $form->isValid()) {
             // Si l'ancien mot de passe est correct :
             if ($passwordEncoder->isPasswordValid($user, $form->get('oldPassword')->getData())) {
+                // encodage du nouveau password reçu via le form :
                 $newEncodedPassword = $passwordEncoder->encodePassword($user, $form->get('plainPassword')->getData());
+                // enregistrement dans le champ Password du User :
                 $user->setPassword($newEncodedPassword);
 
                 $em->flush();

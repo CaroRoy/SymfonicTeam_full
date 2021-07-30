@@ -72,6 +72,7 @@ class SecurityController extends AbstractController
                 return $this->redirectToRoute('app_login');
             }
 
+            // envoi d'un e-mail pour créer un nouveau mot de passe :
             $emailService->sendResetPassword($user);
 
             $this->addFlash('success', 'Un e-mail de réinitialisation de mot de passe vient de t\'être envoyé');
@@ -96,8 +97,11 @@ class SecurityController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // remise à null du token :
             $user->setAuthenticationToken(null);
+            // encodage du nouveau mot de passe :
             $newEncodedPassword = $passwordEncoder->encodePassword($user, $form->get('plainPassword')->getData());
+            // enregistrement du nouveau mot de passe encodé dans le user :
             $user->setPassword($newEncodedPassword);
 
             $em->flush();

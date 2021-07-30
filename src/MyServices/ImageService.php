@@ -39,13 +39,16 @@ class ImageService {
     }
 
     public function handleMoveImage(object $image,object $entity) { 
+        // création d'un nom pour le nouveau fichier, avec le nom de l'extension du fichier reçu :
         $file = md5(uniqid()) . '.' . $image->guessExtension();
 
+        // enregistrement du fichier dans le dossier app_images_directory (soit 'uploads')
         $image->move(
             $this->containerBag->get('app_images_directory'),
             $file
         );
 
+        // enregistrement du nom du fichier dans le champ Avatar de l'entité User :
         $entity->setAvatar('/uploads/'. $file);
     }
 }

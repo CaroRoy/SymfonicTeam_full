@@ -28,9 +28,11 @@ class UpdateAccountController extends AbstractController {
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // récupération de l'image envoyé dans le formulaire :
             /** @var User $user */
             $user = $form->getData();
             $image = $form->get('avatar')->getData();
+            // utilisation du service ImageService pour sauvegarder la nouvelle image et supprimer l'ancienne si besoin :
             $imageService->edit($image ,$user, $user->getAvatar());
 
             $em->flush();

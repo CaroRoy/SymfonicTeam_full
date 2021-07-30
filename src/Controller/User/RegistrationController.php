@@ -55,13 +55,13 @@ class RegistrationController extends AbstractController
             $image = $form->get('avatar')->getData();
             $imageService->save($image,$user);
 
-            // génération du token pour l'activation du compte :
+            // génération du token pour l'activation du compte par e-mail:
             $user->setAuthenticationToken($tokenGenerator->generateToken());
 
             $em->persist($user);
             $em->flush();
-            // do anything else you need here, like send an email
 
+            // envoie de l'e-mail pour l'activation :
             $emailService->validateRegistration($user);
             $this->addFlash('success','Merci pour ton inscription ! Un e-mail de validation vient de t\'être envoyé');
             return $this->redirectToRoute('app_login');
