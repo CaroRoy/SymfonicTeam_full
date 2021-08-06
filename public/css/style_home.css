@@ -25,6 +25,150 @@
 h1 {
   font-size: 2.8em;
 }
+
+/*-------------------------------------------------SECTION-----------------------------------------------*/
+
+section {
+  width: 80%;
+  margin: 2% auto;
+}
+section h2 {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+section a {
+  font-family: "Sansita", sans-serif;
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  box-shadow: 0 0 10px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: rgb(243, 243, 243);
+  transition: all 0.2s ease;
+}
+
+/* Apparence des bulles*/
+
+#rang1 a:first-child {
+  color: rgb(243, 243, 243);
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url(../images/Rock.jpg) no-repeat top/cover;
+}
+
+#rang1 a:first-child:hover {
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url(../images/Rock.jpg) no-repeat top/cover;
+}
+
+#rang1 a:nth-child(2) {
+  color: rgb(243, 243, 243);
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url(../images/jazz.jpg) no-repeat top/cover;
+}
+
+#rang1 a:nth-child(2):hover {
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url(../images/jazz.jpg) no-repeat top/cover;
+}
+
+#rang1 a:last-child {
+  color: rgb(243, 243, 243);
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url(../images/Pop.jpg) no-repeat top/cover;
+}
+
+#rang1 a:last-child:hover {
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url(../images/Pop.jpg) no-repeat top/cover;
+}
+
+#rang2 a:first-child {
+  color: rgb(243, 243, 243);
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url(../images/HardRock.jpg) no-repeat top/cover;
+}
+
+#rang2 a:first-child:hover {
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url(../images/HardRock.jpg) no-repeat top/cover;
+}
+
+#rang2 a:nth-child(2) {
+  color: rgb(243, 243, 243);
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url(../images/classic.jpg) no-repeat top/cover;
+}
+
+#rang2 a:nth-child(2):hover {
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url(../images/classic.jpg) no-repeat top/cover;
+}
+
+#rang2 a:last-child {
+  color: rgb(243, 243, 243);
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url(../images/Reggae.jpg) no-repeat top/cover;
+}
+
+#rang2 a:last-child:hover {
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url(../images/Reggae.jpg) no-repeat top/cover;
+}
+
+#rang3 a:first-child {
+  color: rgb(243, 243, 243);
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url(../images/blues.jpg) no-repeat top/cover;
+}
+
+#rang3 a:first-child:hover {
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url(../images/blues.jpg) no-repeat top/cover;
+}
+
+#rang3 a:nth-child(2) {
+  color: rgb(243, 243, 243);
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url(../images/Chanson\ française.jpg) no-repeat top/cover;
+}
+
+#rang3 a:nth-child(2):hover {
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url(../images/Chanson\ française.jpg) no-repeat top/cover;
+}
+
+#rang3 a:last-child {
+  color: rgb(243, 243, 243);
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url(../images/autres.jpg) no-repeat top/cover;
+}
+
+#rang3 a:last-child:hover {
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url(../images/autres.jpg) no-repeat top/cover;
+}
+
+section div {
+  display: flex;
+  justify-content: space-between;
+}
+
+section div:not(:last-child) {
+  margin-bottom: 50px;
+}
+
+section h3 {
+  transition: all 0.1s ease;
+}
+
+section h3:hover {
+  font-size: 2em;
+}
+
 /* ------------------------------------------MOBILE RESPONSIVE---------------------------------------------- */
 
 @media screen and (max-width: 768px) {

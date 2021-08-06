@@ -16,6 +16,7 @@ class ReplyEventUserParticipateController extends AbstractController {
      */
     public function participate(int $id, EventRepository $eventRepository, ReplyEventUserRepository $replyEventUserRepository,EntityManagerInterface $em, EmailService $emailService) {
         $user = $this->getUser();
+
         $event = $eventRepository->find($id);
         $replyEventUser = $replyEventUserRepository->findOneBy(['user' => $user, 'event' => $event]);
 
