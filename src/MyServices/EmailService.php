@@ -19,7 +19,7 @@ class EmailService {
 
     public function validateRegistration(User $user) {
         $email = (new TemplatedEmail())
-            ->from('info@symfonic-team.fr')
+            ->from('info@symfonic-team.caroline-roy.fr')
             ->to($user->getEmail())
             ->subject('Ton inscription sur Symfonic Team')
             ->htmlTemplate('email/registration.html.twig')
@@ -30,7 +30,7 @@ class EmailService {
     
     public function sendResetPassword(User $user) {
         $email = (new TemplatedEmail())
-            ->from('info@symfonic-team.fr')
+            ->from('info@symfonic-team.caroline-roy.fr')
             ->to($user->getEmail())
             ->subject('Réinitialisation du mot de passe')
             ->htmlTemplate('email/reset_password.html.twig')
@@ -41,7 +41,7 @@ class EmailService {
     
     public function sendNotificationRoleAdminSet(User $user, User $admin) {
         $email = (new TemplatedEmail())
-            ->from('info@symfonic-team.fr')
+            ->from('info@symfonic-team.caroline-roy.fr')
             ->to($user->getEmail())
             ->subject('Tu es administrateur')
             ->htmlTemplate('email/role_set_admin.html.twig')
@@ -52,7 +52,7 @@ class EmailService {
 
     public function sendNotificationRoleAdminDeleted(User $user, User $admin) {
         $email = (new TemplatedEmail())
-            ->from('info@symfonic-team.fr')
+            ->from('info@symfonic-team.caroline-roy.fr')
             ->to($user->getEmail())
             ->subject('Tu n\'es plus administrateur')
             ->htmlTemplate('email/role_delete_admin.html.twig')
@@ -63,7 +63,7 @@ class EmailService {
     
     public function sendNotificationNewParticipant(Event $event, User $user) {
         $email = (new TemplatedEmail())
-            ->from('info@symfonic-team.fr')
+            ->from('info@symfonic-team.caroline-roy.fr')
             ->to($user->getEmail())
             ->subject('Un nouveau participant à ta séance "' . $event->getTitle() . '"')
             ->htmlTemplate('email/event_new_participant.html.twig')
@@ -74,7 +74,7 @@ class EmailService {
 
     public function sendNotificationAdminEventDeleted(Event $event, User $user) {
         $email = (new TemplatedEmail())
-            ->from('info@symfonic-team.fr')
+            ->from('info@symfonic-team.caroline-roy.fr')
             ->to($user->getEmail())
             ->subject('Ta séance "' . $event->getTitle() . '" a été supprimée')
             ->htmlTemplate('email/admin_event_deleted.html.twig')
@@ -87,7 +87,7 @@ class EmailService {
     public function sendNotificationEventDeleted(Event $event, array $participants) {
         foreach ($participants as $p) {
             $email = (new TemplatedEmail())
-                ->from('info@symfonic-team.fr')
+                ->from('info@symfonic-team.caroline-roy.fr')
                 ->to($p->getEmail())
                 ->subject('La séance "' . $event->getTitle() . '" est annulée')
                 ->htmlTemplate('email/event_deleted.html.twig')
