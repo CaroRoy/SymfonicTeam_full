@@ -25,6 +25,11 @@ body {
   background-color: whitesmoke;
 }
 
+.main-page {
+  width: 80%;
+  margin: 50px auto;
+}
+
 .flash {
   width: 80%;
   margin: 20px auto;
@@ -153,9 +158,13 @@ footer p {
   margin-top: 20px;
 }
 
-footer div {
+footer .first-div {
   width: 65%;
   margin-right: 10%;
+}
+
+footer ul {
+  padding-left: 0;
 }
 
 footer a:hover {
@@ -163,11 +172,11 @@ footer a:hover {
   color: inherit;
 }
 
-footer li:last-child {
+footer ul:last-child li {
   font-size: 0.8em;
 }
 
-footer li:last-child span {
+footer ul:last-child li span {
   color: #f1d57f;
 }
 
@@ -183,7 +192,7 @@ footer li:last-child span {
     flex-direction: column;
   }
 
-  footer div {
+  footer .first-div {
     width: 100%;
   }
 
