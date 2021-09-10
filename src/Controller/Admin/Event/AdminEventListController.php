@@ -12,6 +12,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AdminEventListController extends AbstractController {
     /**
+     * Affiche la liste des séances
+     * 
      * @Route("admin/seances", name="admin_event_list")
      */
     public function list(EventRepository $eventRepository, Request $request): Response {

@@ -13,6 +13,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class EventType extends AbstractType
 {
+    /**
+     * Formulaire d'une nouvelle séance
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder

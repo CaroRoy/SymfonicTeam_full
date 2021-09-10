@@ -13,9 +13,11 @@ use Symfony\Component\HttpFoundation\Response;
 
 class EventUpdateController extends AbstractController {
     /**
+     * Gère la modification d'une séance
+     * 
      * @Route("modifier/seance-{id}", name="event_update")
      */
-    public function create(int $id,Request $request, EntityManagerInterface $em, EventRepository $eventRepository) : Response {
+    public function update(int $id,Request $request, EntityManagerInterface $em, EventRepository $eventRepository) : Response {
         $event = $eventRepository->find($id);
         $user = $this->getUser();
 
@@ -24,7 +26,7 @@ class EventUpdateController extends AbstractController {
             return $this->redirectToRoute('user_event_list');
         }
 
-        // GESTION DES AUTORISATIONS
+        // Vérification que l'utilisateur qui modifie est bien l'auteur de la séance
         if($event->getUser() !== $user) {
             $this->addFlash('danger','Tu n\'es pas autorisé à modifier cette séance');
             return $this->redirectToRoute('event_list');

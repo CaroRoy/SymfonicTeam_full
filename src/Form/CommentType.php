@@ -10,6 +10,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CommentType extends AbstractType
 {
+    /**
+     * Formulaire d'un nouveau message
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder

@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class EventListController extends AbstractController {
     /**
+     * Affiche la liste des séances proposées par l'utilisateur
+     * 
      * @Route("/mes-seances", name="user_event_list")
      */
     public function list(EventRepository $eventRepository) : Response {

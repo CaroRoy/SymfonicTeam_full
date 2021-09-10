@@ -14,6 +14,9 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
 class ResetPasswordFormType extends AbstractType
 {
+    /**
+     * Formulaire d'un nouveau mot de passe
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder

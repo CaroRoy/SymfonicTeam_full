@@ -11,6 +11,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AdminSetRoleController extends AbstractController {
     /**
+     * Attribut le rôle admin à un utilisateur
+     * 
      * @Route("admin/details/utilisateur-{id}/ajout-role", name="admin_set_role")
      */
     public function setAdmin(int $id, UserRepository $userRepository, EntityManagerInterface $em, EmailService $emailService) : RedirectResponse {

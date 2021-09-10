@@ -19,6 +19,9 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
 class UpdateAccountFormType extends AbstractType
 {
+    /**
+     * Formulaire pour la modification d'un compte utilisateur
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder

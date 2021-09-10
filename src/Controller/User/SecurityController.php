@@ -18,6 +18,8 @@ use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
 class SecurityController extends AbstractController
 {
     /**
+     * Connecte un utilisateur
+     * 
      * @Route("/login", name="app_login")
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
@@ -36,6 +38,8 @@ class SecurityController extends AbstractController
     }
 
     /**
+     * Déconnecte un utilisateur
+     * 
      * @Route("/logout", name="app_logout")
      */
     public function logout()
@@ -44,6 +48,8 @@ class SecurityController extends AbstractController
     }
 
     /**
+     * Gère la demande de réinitialisation d'un mot de passe
+     * 
      * @Route("/mot-de-passe-oublie", name="app_forgotten_password")
      */
     public function forgetPassword(Request $request, UserRepository $userRepository, EntityManagerInterface $em, EmailService $emailService, TokenGeneratorInterface $tokenGenerator) {
@@ -83,6 +89,8 @@ class SecurityController extends AbstractController
     }
 
     /**
+     * Enregistre le nouveau mot de passe en base de données
+     * 
      * @Route("/mot-de-passe/reinitialisation/{token}", name="app_reset_password")
      */
     public function resetPassword(string $token, UserRepository $userRepository, Request $request, UserPasswordEncoderInterface $passwordEncoder, EntityManagerInterface $em) {

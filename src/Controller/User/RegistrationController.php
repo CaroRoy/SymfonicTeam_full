@@ -19,6 +19,8 @@ use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
 class RegistrationController extends AbstractController
 {
     /**
+     * Crée un nouveau compte utilisateur
+     * 
      * @Route("/inscription", name="app_register")
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, ImageService $imageService, EmailService $emailService, UserAgeService $userAgeService, EntityManagerInterface $em, TokenGeneratorInterface $tokenGenerator): Response
@@ -77,6 +79,8 @@ class RegistrationController extends AbstractController
     }
 
     /**
+     * Confirme l'activation d'un nouveau compte utilisateur
+     * 
      * @Route("activation/{token}", name ="activation")
      */
     public function activation(string $token, UserRepository $userRepository, EntityManagerInterface $em) {

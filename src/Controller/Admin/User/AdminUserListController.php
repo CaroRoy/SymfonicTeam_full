@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AdminUserListController extends AbstractController {
     /**
+     * Affiche la liste des utilisateurs
+     * 
      * @Route("admin/utilisateurs", name="admin_user_list")
      */
     public function list(UserRepository $userRepository): Response {

@@ -14,6 +14,9 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
 class UpdatePasswordFormType extends AbstractType
 {
+    /**
+     * Formulaire pour la modification du mot de passe
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder

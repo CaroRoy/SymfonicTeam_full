@@ -19,6 +19,9 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
 class RegistrationFormType extends AbstractType
 {
+    /**
+     * Formulaire d'un nouveau compte utilisateur
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder

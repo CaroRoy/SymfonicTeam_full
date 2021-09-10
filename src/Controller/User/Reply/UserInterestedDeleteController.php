@@ -11,6 +11,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class UserInterestedDeleteController extends AbstractController {
     /**
+     * Gère la suppression d'une séance par laquelle l'utilisateur n'est plus intéressé
+     * 
      * @Route("/mes-favoris/supprimer/seance-{id}", name="user_interested_delete")
      */
     public function delete(int $id, ReplyEventUserRepository $replyEventUserRepository, EntityManagerInterface $em) : RedirectResponse {

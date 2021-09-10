@@ -11,6 +11,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AdminUserShowController extends AbstractController
 {
     /**
+     * Affiche le détail d'un utilisateur
+     * 
      * @Route("admin/details/utilisateur-{id}", name="admin_user_show")
      */
     public function show(int $id, UserRepository $userRepository, ReplyEventUserRepository $replyEventUserRepository) {

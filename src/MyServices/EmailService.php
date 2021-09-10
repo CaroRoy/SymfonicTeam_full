@@ -17,6 +17,9 @@ class EmailService {
         $this->twig = $twig;
     }
 
+    /**
+     * Envoie l'e-mail de validation d'une inscription
+     */
     public function validateRegistration(User $user) {
         $email = (new TemplatedEmail())
             ->from('info@symfonic-team.caroline-roy.fr')
@@ -28,6 +31,9 @@ class EmailService {
         $this->mailer->send($email);
     }
     
+    /**
+     * Envoie l'e-mail pour la réinitialisation du mot de passe
+     */
     public function sendResetPassword(User $user) {
         $email = (new TemplatedEmail())
             ->from('info@symfonic-team.caroline-roy.fr')
@@ -39,6 +45,9 @@ class EmailService {
         $this->mailer->send($email);
     }
     
+    /**
+     * Envoie l'e-mail d'information à un utilisateur nommé admin
+     */
     public function sendNotificationRoleAdminSet(User $user, User $admin) {
         $email = (new TemplatedEmail())
             ->from('info@symfonic-team.caroline-roy.fr')
@@ -50,6 +59,9 @@ class EmailService {
         $this->mailer->send($email);
     }
 
+    /**
+     * Envoie l'e-mail d'information à un utilisateur ayant perdu son rôle admin
+     */
     public function sendNotificationRoleAdminDeleted(User $user, User $admin) {
         $email = (new TemplatedEmail())
             ->from('info@symfonic-team.caroline-roy.fr')
@@ -61,6 +73,9 @@ class EmailService {
         $this->mailer->send($email);
     }
     
+    /**
+     * Envoie l'e-mail d'information qu'un nouveau participant s'est inscrit
+     */
     public function sendNotificationNewParticipant(Event $event, User $user) {
         $email = (new TemplatedEmail())
             ->from('info@symfonic-team.caroline-roy.fr')
@@ -72,6 +87,9 @@ class EmailService {
         $this->mailer->send($email);
     }
 
+    /**
+     * Envoie l'e-mail d'information qu'un admin a supprimé la séance proposée par l'utilisateur
+     */
     public function sendNotificationAdminEventDeleted(Event $event, User $user) {
         $email = (new TemplatedEmail())
             ->from('info@symfonic-team.caroline-roy.fr')
@@ -83,7 +101,9 @@ class EmailService {
         $this->mailer->send($email);
     }
 
-
+    /**
+     * Envoie l'e-mail d'information aux participants que la séance a été supprimée
+     */
     public function sendNotificationEventDeleted(Event $event, array $participants) {
         foreach ($participants as $p) {
             $email = (new TemplatedEmail())

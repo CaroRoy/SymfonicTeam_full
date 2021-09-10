@@ -8,6 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class LegalNoticeController extends AbstractController {
     /**
+     * Affiche la page des mentions légales
+     * 
      * @Route("mentions-légales", name="legal_notice")
      */
     public function show(): Response {

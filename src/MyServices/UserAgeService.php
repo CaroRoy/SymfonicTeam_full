@@ -4,6 +4,12 @@ namespace App\MyServices;
 
 class UserAgeService {
 
+    /**
+     * Calcule un âge
+     * 
+     * @param object $form Le formulaire qui contient le champ "date de naissance"
+     * @return int
+     */
     public function getAge(object $form) : int {
         // On récupère la date de naissance dans le formulaire :
         $formBirthdate = $form->get('birthdate')->getData();

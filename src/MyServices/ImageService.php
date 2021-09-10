@@ -12,12 +12,18 @@ class ImageService {
         $this->containerBag = $containerBag;
     }
 
+    /**
+     * Enregistre un avatar
+     */
     public function save(object $image = null, object $entity) {
         if($image !== null) {
             $this->handleMoveImage($image, $entity);
         }
     }
 
+    /**
+     * Modifie un avatar
+     */
     public function edit(object $image = null, object $entity,string $imageOriginal = null) {
         if($image !== null) {
             $this->handleMoveImage($image, $entity);
@@ -27,6 +33,9 @@ class ImageService {
         }
     }
 
+    /**
+     * Supprime un avatar
+     */
     public function deleteImage(string $imageUrl = null) {
         //Processus de supression de l'image précédente
         if($imageUrl !== null && $imageUrl !== User::IMAGE_DEFAUT_PATH) {
@@ -38,6 +47,9 @@ class ImageService {
         }
     }
 
+    /**
+     * Gère la réception d'un avatar
+     */
     public function handleMoveImage(object $image,object $entity) { 
         // création d'un nom pour le nouveau fichier, avec le nom de l'extension du fichier reçu :
         $file = md5(uniqid()) . '.' . $image->guessExtension();

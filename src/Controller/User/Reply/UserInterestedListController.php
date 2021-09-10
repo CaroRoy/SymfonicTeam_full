@@ -10,6 +10,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class UserInterestedListController extends AbstractController {
     /**
+     * Affiche la liste des séances par lesquelles l'utilisateur est intéressé
+     * 
      * @Route("/mes-favoris", name="user_interested_list")
      */
     public function list(ReplyEventUserRepository $replyEventUserRepository) : Response {

@@ -9,6 +9,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ForgetPasswordFormType extends AbstractType
 {
+    /** 
+     * Formulaire de demande de réinitialisation du mot de passe
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder

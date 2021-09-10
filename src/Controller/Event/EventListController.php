@@ -13,6 +13,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class EventListController extends AbstractController {
     /**
+     * Affiche la liste des séances
+     * 
      * @Route("/seances", name="event_list")
      */
     public function list(EventRepository $eventRepository, Request $request): Response {       
@@ -21,11 +23,13 @@ class EventListController extends AbstractController {
             return $this->redirectToRoute('app_login');
         }
         
+        // Création du formulaire de filtre
         $data = new SearchData();
         $data->page = $request->get('page', 1);
         $form = $this->createForm(SearchFormType::class, $data);
         $form->handleRequest($request);
 
+        // Récupération des résultats éventuellement filtrés selon certains critères
         $events = $eventRepository->findSearch($data);
         $all = $events->getTotalItemCount();
 

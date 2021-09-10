@@ -11,6 +11,8 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UpdatePasswordController extends AbstractController {
     /**
+     * Enregistre le nouveau mot de passe d'un utilisateur dans la base de données
+     * 
      * @Route("/changement-mot-de-passe", name="update_password")
      */
     public function resetPassword(Request $request, EntityManagerInterface $em, UserPasswordEncoderInterface $passwordEncoder) {

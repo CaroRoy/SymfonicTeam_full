@@ -12,6 +12,9 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class SearchFormType extends AbstractType {
+    /**
+     * Formulaire pour les filtres de recherche
+     */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
             ->add('q', TextType::class, [

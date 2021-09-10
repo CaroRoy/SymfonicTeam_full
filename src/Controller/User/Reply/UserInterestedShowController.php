@@ -13,6 +13,8 @@ use Symfony\Component\HttpFoundation\Request;
 
 class UserInterestedShowController extends AbstractController {
     /**
+     * Affiche le détail d'une séance par laquelle l'utilisateur est intéressé
+     * 
      * @Route("mes-favoris/details/seance-{id}", name="user_interested_show")
      */
     public function show(int $id, ReplyEventUserRepository $replyEventUserRepository, CommentRepository $commentRepository, PaginatorInterface $paginatorInterface, Request $request) : Response {

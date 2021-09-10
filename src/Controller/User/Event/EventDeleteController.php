@@ -13,6 +13,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class EventDeleteController extends AbstractController {
     /**
+     * Gère la suppression d'une séance proposée par l'utilisateur
+     * 
      * @Route("supprimer/seance-{id}", name="event_delete")
      */
     public function delete(int $id, EventRepository $eventRepository,ReplyEventUserRepository $replyEventUserRepository, EntityManagerInterface $em, EmailService $emailService) : RedirectResponse {

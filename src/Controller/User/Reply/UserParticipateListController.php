@@ -10,6 +10,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class UserParticipateListController extends AbstractController {
     /**
+     * Affiche la liste des séances auxquelles l'utilisateur participe
+     * 
      * @Route("/mes-participations", name="user_participate_list")
      */
     public function list(ReplyEventUserRepository $replyEventUserRepository) : Response {

@@ -11,6 +11,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class UserParticipateDeleteController extends AbstractController {
     /**
+     * Gère la suppression d'une participation
+     * 
      * @Route("/mes-participations/supprimer/seance-{id}", name="user_participate_delete")
      */
     public function delete(int $id, ReplyEventUserRepository $replyEventUserRepository, EntityManagerInterface $em) : RedirectResponse {

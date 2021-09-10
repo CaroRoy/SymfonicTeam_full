@@ -8,6 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class PrivateSpaceController extends AbstractController {
     /**
+     * Affiche l'espace utilisateur
+     * 
      * @Route("mon-espace", name="user_private_space")
      */
     public function showSpace(): Response {

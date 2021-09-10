@@ -12,13 +12,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ReplyEventUserParticipateController extends AbstractController {
     /**
+     * Enregistre la participation de l'utilisateur à une séance
+     * 
      * @Route("seance-{id}/participation", name="event_reply_participate")
      */
     public function participate(int $id, EventRepository $eventRepository, ReplyEventUserRepository $replyEventUserRepository,EntityManagerInterface $em, EmailService $emailService) {
         $user = $this->getUser();
 
         $event = $eventRepository->find($id);
-        $replyEventUser = $replyEventUserRepository->findOneBy(['user' => $user, 'event' => $event]);
 
         if(!$event) {
             $this->addFlash('warning','Cette séance n\'existe pas');
@@ -30,6 +31,7 @@ class ReplyEventUserParticipateController extends AbstractController {
             return $this->redirectToRoute('event_list');
         }
 
+        $replyEventUser = $replyEventUserRepository->findOneBy(['user' => $user, 'event' => $event]);
         if ($event->getReplyEventUsers()->contains($replyEventUser)) {
             if ($replyEventUser->getReplyType() === $replyEventUser::OK) {
                 $this->addFlash('warning','Tu es déjà inscrit(e) à cette séance');

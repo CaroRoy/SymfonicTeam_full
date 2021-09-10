@@ -13,6 +13,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class UpdateAccountController extends AbstractController {
     /**
+     * Enregistre les modifications d'un compte utilisateur
+     * 
      * @Route("/mon-compte", name="update_account")
      */
     public function update(Request $request, ImageService $imageService, EntityManagerInterface $em): Response

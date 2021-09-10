@@ -15,6 +15,8 @@ use Symfony\Component\HttpFoundation\Request;
 
 class UserParticipateShowController extends AbstractController {
     /**
+     * Affiche le détail d'une séance à laquelle l'utilisateur participe
+     * 
      * @Route("mes-participations/details/seance-{id}", name="user_participate_show")
      */
     public function show(int $id, ReplyEventUserRepository $replyEventUserRepository, CommentRepository $commentRepository, Request $request, EntityManagerInterface $em, PaginatorInterface $paginatorInterface) : Response {

@@ -16,6 +16,8 @@ use Symfony\Component\HttpFoundation\Request;
 
 class EventShowController extends AbstractController {
     /**
+     * Affiche le détail d'une séance proposée par l'utilisateur
+     * 
      * @Route("/details/seance-{id}", name="user_event_show")
      */
     public function show(int $id, EventRepository $eventRepository, ReplyEventUserRepository $replyEventUserRepository, CommentRepository $commentRepository, Request $request, EntityManagerInterface $em, PaginatorInterface $paginatorInterface) : Response {

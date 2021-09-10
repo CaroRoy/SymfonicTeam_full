@@ -12,12 +12,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ReplyEventUserInterestedController extends AbstractController {
     /**
+     * Enregistre l'intérêt de l'utilisateur pour une séance
+     * 
      * @Route("seance-{id}/favoris", name="event_reply_interested")
      */
     public function interest(int $id, EventRepository $eventRepository, ReplyEventUserRepository $replyEventUserRepository,EntityManagerInterface $em, EmailService $emailService) {
         $user = $this->getUser();
         $event = $eventRepository->find($id);
-        $replyEventUser = $replyEventUserRepository->findOneBy(['user' => $user, 'event' => $event]);
 
         if(!$event) {
             $this->addFlash('warning','Cette séance n\'existe pas');
@@ -29,6 +30,7 @@ class ReplyEventUserInterestedController extends AbstractController {
             return $this->redirectToRoute('event_list');
         }
 
+        $replyEventUser = $replyEventUserRepository->findOneBy(['user' => $user, 'event' => $event]);
         if ($event->getReplyEventUsers()->contains($replyEventUser)) {
             if ($replyEventUser->getReplyType() === $replyEventUser::OK) {
                 $this->addFlash('warning','Tu es déjà inscrit(e) à cette séance');

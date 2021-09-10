@@ -10,6 +10,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AdminDeleteRoleController extends AbstractController {
     /**
+     * Ote le rôle admin à un utilisateur
+     * 
      * @Route("admin/details/utilisateur-{id}/suppression-role", name="admin_delete_role")
      */
     public function deleteRole(int $id, UserRepository $userRepository, EntityManagerInterface $em, EmailService $emailService) {

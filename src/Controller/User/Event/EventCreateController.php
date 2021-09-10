@@ -12,6 +12,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class EventCreateController extends AbstractController {
     /**
+     * Crée une nouvelle séance
+     * 
      * @Route("nouvelle-seance", name="event_create")
      */
     public function create(Request $request, EntityManagerInterface $em, UserRepository $userRepository) : Response {
