@@ -25,7 +25,7 @@
         }
 
         a {
-            color: rgb(243, 243, 243);
+            color: rgb(243, 243, 243) !important;
             text-decoration: none;
             background-color: rgb(74, 0, 170);
             border: rgb(74, 0, 170) 1px solid;
@@ -58,7 +58,7 @@
     <p>
         Pour confirmer ton inscription, merci de cliquer sur le lien suivant :
     </p>
-    <p><a class="btn btn-primary" href="{{absolute_url(path('activation', {'token' : token}))}}">Je confirme mon inscription</a></p>
+    <p><a href="{{absolute_url(path('activation', {'token' : token}))}}">Je confirme mon inscription</a></p>
     <p>
         A très vite,
         <br>
