@@ -54,16 +54,17 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            // ->add('agreeTerms', CheckboxType::class, [
-            //     'label' => 'Veuillez accepter les CGU',
-            //     'mapped' => false,
-            //     'required'=> false,
-            //     'constraints' => [
-            //         new IsTrue([
-            //             'message' => 'Veuillez accepter les CGU',
-            //         ]),
-            //     ],
-            // ])
+            ->add('agreeTerms', CheckboxType::class, [
+                'label' => 'Accepter les <a href="mentions-legales" target="_blank">CGU</a>',
+                'label_html' => true,
+                'mapped' => false,
+                'required'=> false,
+                'constraints' => [
+                    new IsTrue([
+                        'message' => 'Merci d\'accepter les CGU',
+                    ]),
+                ],
+            ])
         ;
     }
 

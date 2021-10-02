@@ -10,7 +10,7 @@ class LegalNoticeController extends AbstractController {
     /**
      * Affiche la page des mentions légales
      * 
-     * @Route("mentions-légales", name="legal_notice")
+     * @Route("mentions-legales", name="legal_notice")
      */
     public function show(): Response {
         return $this->render("legal_notice.html.twig");
